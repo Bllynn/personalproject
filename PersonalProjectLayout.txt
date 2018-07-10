@@ -33,6 +33,7 @@ create table Users{
 	password varchar(20)
 	first name varchar(45):
 	last name varchar(45)
+	admin:true
 	}
 create table Appointments{
 	 id serial primary key(?) for appointments

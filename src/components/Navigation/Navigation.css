@@ -1,0 +1,14 @@
+.Nav-bar{
+    width:50%;
+    display:flex;
+    height:100px;
+    list-style-type:none;
+    margin:0;
+    justify-content: space-around;
+    align-items:center;
+}
+.Menu{
+    width:100vw;
+    display:flex;
+    justify-content:flex-end;
+}
