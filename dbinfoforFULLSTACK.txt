@@ -1,0 +1,20 @@
+Host:
+ec2-50-19-105-188.compute-1.amazonaws.com
+
+Database:
+d841n7hpbft1vp
+
+User:
+xwrqcwjfkagmdv
+
+Port:
+5432
+
+Password:
+6eab0e440b6f4ff3d35780216f4470d888b962cd43cc1cd885cbc4383d830174
+
+URI:
+postgres://xwrqcwjfkagmdv:6eab0e440b6f4ff3d35780216f4470d888b962cd43cc1cd885cbc4383d830174@ec2-50-19-105-188.compute-1.amazonaws.com:5432/d841n7hpbft1vp
+
+Heroku CLI:
+heroku pg:psql postgresql-objective-13984 --app full-stack101

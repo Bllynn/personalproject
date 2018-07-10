@@ -1,0 +1,70 @@
+IDEA AND USERS:
+what problem does your app solve?
+help schedule appointments
+
+how does it solve these problems?
+allows the user to log in and see what appointments they've scheduled
+
+who is your target user?
+people who want to be more organized
+
+how much experience do they have with technology?
+moderate
+
+
+
+FEATURES:
+Write use cases for your app(ex as a user i can log in and create an appointment based on available optionslist of favorite food)
+MINIMAL VIABLE PRODUCT VS BONUS FEATURES NEED TO BE CLARIFIED!!!
+	User can log in:when they do, they see all the appointments they have and available appointments
+
+
+VIEWS:(skeletal outline of what you want each page to display and what information it contains.
+
+COMPONENT TREE
+
+
+
+MOMENT.JS for working with time
+DATABASE SCHEMA
+create table Users{
+	id serial primary key
+	username varchar(20)
+	password varchar(20)
+	first name varchar(45):
+	last name varchar(45)
+	}
+create table Appointments{
+	 id serial primary key(?) for appointments
+	date (what type of information is a date?)
+	time:(are there unique identifiers?)
+	client_id references Users(id) (foreign key)
+
+material UI for styling library;
+(calandars and styling options)
+
+GET ALL USERS:
+axios get('/api/users)
+	receives username and password:
+	sends username and appointments
+
+
+GET SPECIFIC USER AND THEIR APPOINTMENTS:
+axios get('/api/users/:id)
+	receives user.id
+	sends user information and appointments?;
+
+MAKE AN APPOINTMENT BY ID:
+axios put('/api/appointment/:id)
+	receives appointment time and date, user id
+	sends everything back after appointment is edited?;
+
+CREATE AN APPOINTMENT:
+axios.post('/api/appointment')
+	receives appointment date,time,user id
+	sends appointment info,user info
+
+DELETE APPOINTMENT BY ID:	
+axios.delete('/api/appointment:id)	
+	receives appointment ID
+	sends new appointment(sans the appointment ID selected for delete)
