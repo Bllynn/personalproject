@@ -38,7 +38,7 @@ class App extends Component {
       : error.message;
   }
 
-  clickHandler=(event)=>{
+  clickHandler=()=>{
     return console.log('this is a thing that happens')
  }
 
@@ -48,9 +48,10 @@ class App extends Component {
       <Navigation
       clickHandler={this.clickHandler}/>
         <div className='Welcome'>
-        
+        Welcome to the schedule meister! Please log in to veiw or schedule any appointments
           <button
-          onClick={this.login}>Sign In</button>
+            onClick={this.login}>Sign In
+            </button>
         </div>
       </div>
     );

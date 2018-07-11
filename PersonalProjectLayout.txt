@@ -25,7 +25,6 @@ COMPONENT TREE
 
 
 
-MOMENT.JS for working with time
 DATABASE SCHEMA
 create table Users{
 	id serial primary key
@@ -33,7 +32,7 @@ create table Users{
 	password varchar(20)
 	first name varchar(45):
 	last name varchar(45)
-	admin:true
+	admin:false
 	}
 create table Appointments{
 	 id serial primary key(?) for appointments
@@ -42,6 +41,7 @@ create table Appointments{
 	client_id references Users(id) (foreign key)
 
 material UI for styling library;
+MOMENT.JS for working with time
 (calandars and styling options)
 
 GET ALL USERS:

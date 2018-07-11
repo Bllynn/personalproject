@@ -8,8 +8,8 @@ export default function Navigation(props){
             Navigation Bar
             
                     <ul className='Nav-bar'>
-                        <li>Home</li>
-                        <li>Calendar</li>
+                        <li><Link to='/'>Home</Link></li>
+                        <li><Link to='/Calendar'>Calendar</Link></li>
                         <li><Link to='/about'>About</Link></li>
                     </ul>
             </div>

@@ -1,7 +1,11 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+import Navigation from '../Navigation/Navigation';
 export default function about(){
    return (
    <div className='About'>
+   <Navigation/>
+   <Link to='/dashboard'><button className='abtbtn'>Return</button></Link>
         <p>
             Massage therapy is a treatment approach which is growing in demand and popularity. It was once considered an alternative or fringe approach, but it is now becoming much more mainstream. More importantly, now that massage therapy is considered a mainstream treatment option, many insurance companies provide coverage for treatment sessions. This form of therapy involves hands-on techniques to increase circulation, relieve tension, reduce stress, relieve anxiety, improve sleep, and promote relaxation throughout the entire body, as well as many other benefits. The body’s soft tissue areas include the muscles, tendons, connective tissue, etc. If someone is tense and in need of a release, or they have been injured and have extensive muscle and/or nerve tissue damage that plagues their body, massage therapy might be worth exploring. Here are some benefits of massage therapy.
         </p>
