@@ -1,4 +1,4 @@
-.Nav-bar{
+/* .Nav-bar{
     width:50%;
     display:flex;
     height:100px;
@@ -8,10 +8,10 @@
     align-items:center;
 }
 .Menu{
+    display:flex;
     height:100px;
     background-color:#bada55;
     width:100vw;
-    display:flex;
     justify-content:flex-end;
 }
 .Welcome{
@@ -36,4 +36,4 @@
     width:100px;
     border-radius:25px;
     position:absolute;
-}
+} */
