@@ -10,6 +10,8 @@ let {
     SESSION_SECRET,
     SERVER_PORT, 
     REACT_APP_DOMAIN,
+    REACT_APP_CLIENT_SECRET,
+    REACT_APP_CLIENT_ID,
     CONNECTION_STRING
 }=process.env;
 
@@ -27,66 +29,37 @@ massive(CONNECTION_STRING).then(db=>{
 
 // app.use(authMid.bypassAuthInDevelopment)
 ///////////////////////////AUTH 0/////////////////////////
-app.get('/auth/callback', (req, res) => {
-  
-  
-  
-    // STEP 1.)
-    //Make an object called payload with the code recieved from the clientside, client_id, client_secret, grant_type, redirect_uri 
-    //hint: code is recieved from client side as a query
-    let {//destructureing these items off of our .env file
-      REACT_APP_AUTH0_CLIENT_ID,
-      REACT_APP_AUTH0_CLIENT_SECRET
-    } = process.env;
-    let payload ={
-      
-      client_id:REACT_APP_AUTH0_CLIENT_ID,
-      client_secret:REACT_APP_AUTH0_CLIENT_SECRET,
+app.get('/auth/callback', async (req,res)=>{
+  //code from auth0 on req.query.code
+  let payload ={
+      client_id:REACT_APP_CLIENT_ID,
+      client_secret:REACT_APP_CLIENT_SECRET,
       code: req.query.code,
-      grant_type: 'authorization_code',
+      grant_type:'authorization_code',
       redirect_uri:`http://${req.headers.host}/auth/callback`
-      
-    };
-    
-    
-    //STEP 2.)
-    // WRITE a FUNCTION that RETURNS an axios POST with the payload as the body
-    function tradeCodeForAccessToken(){
-      
-      //code here..
-      return axios.post(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/oauth/token`, payload)
-    }
-    
-    //STEP 3.)
-    // WRITE a FUNCTION that accepts the access token as a parameter and RETURNS an axios GET to auth0 that passes the access token as a query
-    function tradeAccessTokenForUserInfo(response){
-      
-      //code here ..
-      let token = response.data.access_token; 
-      return axios.get(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/userinfo/?access_token=${token}`)
-    }
-    
-    
-    //STEP 4.)
-    
-    // WRITE a FUNCTION that accepts the userInfo as a parameter and RETURNS a block of code.
-    // Your code should set session, check your database to see if user exists and return thier info or if they dont exist, insert them into the database
-    function storeUserInfoInDataBase(response){
-      
-      //code here...
-      req.session.user= response.data;
-      res.redirect('http://localhost:3000/#/');
-      
-    }
-     
-    //Final Code, Uncomment after completeing steps 1-4 above
-    
-    tradeCodeForAccessToken()
-    .then(accessToken => tradeAccessTokenForUserInfo(accessToken))
-    .then(userInfo => storeUserInfoInDataBase(userInfo));
-    
-    
-  });
+  };/////////////////////////PROCESS BELOW THIS////////////////////
+  // responseWithToken is taking the data we get back from the axios.post to specific url
+  //sending the information located within the payload object ABOVE
+  let responseWithToken = await axios.post(`https://${REACT_APP_DOMAIN}/oauth/token`,payload);
+  let userData = await axios.get(`https://${REACT_APP_DOMAIN}/userinfo?access_token=${responseWithToken.data.access_token}`)
+/////////////////////////////////////JUST ABOVE THIS//////////////////
+// userData is waiting for previous code to run, and taking userData that it gets from axios.get...assigning it all to session
+  const db = req.app.get('db');
+  let {sub,family_name,given_name,picture} = userData.data
+  let userExists = await db.find_user([sub]);
+      if(userExists[0]){
+          req.session.user=userExists[0];
+          res.redirect('http://localhost:3000/#/dashboard');
+      }else{
+          db.create_user([sub,given_name,family_name,picture]).then( createdUser =>{
+              req.session.user = createdUser[0]//put something on the req.session.user
+              res.redirect('http://localhost:3000/#/dashboard');
+          });
+          // let createdUser = await db.create_user([sub,name,picture]);
+          // req.session.user=createdUser[0];
+          // res.redirect('http://localhost:3000/#/');
+      }
+});
   
   app.post('/api/logout', (req, res) => {
     req.session.destroy();
@@ -112,7 +85,7 @@ app.get('/auth/callback', (req, res) => {
 ///////////////////////////AUTH 0/////////////////////////
 //////////////////MY CODE////////////////////////////////
 app.get('/api/users',ctrl.getAllUsers)
-app.get('/api/appointment/:id',ctrl.getAllAptByUser)
+app.get('/api/appointment/',ctrl.getAllAptByUser)
 
 app.delete('/api/appointment/:id',ctrl.deleteApt)
 

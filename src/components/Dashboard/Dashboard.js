@@ -1,7 +1,11 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
-import Appointment from '../Appointment/Appointment'
+import { connect } from 'react-redux';
 import axios from 'axios';
+import Appointment from '../Appointment/Appointment'
+
+
+
 class Dashboard extends Component{
     constructor(){
         super()
@@ -14,6 +18,11 @@ class Dashboard extends Component{
         axios.get('/api/appointment').then(appointment=>{
             this.setState({
                 appointment:appointment.data
+            })
+        })
+        axios.get('/api/users').then(users=>{
+            this.setState({
+                users:users
             })
         })
     }
@@ -48,4 +57,14 @@ class Dashboard extends Component{
     
 
 }
+
+// function moveFromStateToProps(state){
+//     return{
+//         users:state.users,
+//         appointments:state.appointments
+//     }
+// }
+// let connectedFunction=connect(moveFromStateToProps,actions);
+// let ConnectedDashboard=connectedFunction(Dashboard)
+// export default ConnectedDashboard
 export default Dashboard

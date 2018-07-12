@@ -8,7 +8,7 @@ export default function Navigation(props){
             Navigation Bar
             
                     <ul className='Nav-bar'>
-                        <li><Link to='/'>Home</Link></li>
+                        <li><Link to='/Dashboard'>Home</Link></li>
                         <li><Link to='/Calendar'>Calendar</Link></li>
                         <li><Link to='/about'>About</Link></li>
                     </ul>

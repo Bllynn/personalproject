@@ -15,7 +15,7 @@ class Calendar extends Component {
     super(props)
     this.state = {
       startDate: moment(),
-      startTime: moment().format('LT')
+      appointment: moment().format('LT')
     }
   }
 
