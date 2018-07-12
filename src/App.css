@@ -1,6 +1,7 @@
-/* .App{
+.App{
+  justify-content: center;
   box-sizing: border-box;
   display:flex;
   height:100vh;
   background-color:magenta;
-} */
+}

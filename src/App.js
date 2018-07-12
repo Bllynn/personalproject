@@ -8,7 +8,7 @@ class App extends Component {
   constructor(){
     super()
     this.state={
-      user:null,
+      user:''
     }
   }
 
@@ -26,7 +26,7 @@ class App extends Component {
 
   logout() {
     axios.post('/api/logout').then(() => {
-      this.setState({ user: null });
+      this.setState({ user:'' });
     });
   }
 
@@ -52,7 +52,7 @@ class App extends Component {
           <button
             onClick={this.login}>Sign In
             </button>
-        </div>
+            </div>
       </div>
     );
   }

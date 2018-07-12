@@ -1,11 +1,12 @@
-const express = require('express');
-const app=express();
-const session=require('express-session')
-const axios=require('axios');
-const massive=require('massive');
+const express = require('express'),
+        app = express(),
+        session = require('express-session'),
+        axios = require('axios'),
+        massive = require('massive'),
+        ctrl = require('./controller/controller')
 require('dotenv').config();
 app.use(express.json());
-let { 
+let {
     SESSION_SECRET,
     SERVER_PORT, 
     REACT_APP_DOMAIN,
@@ -19,8 +20,12 @@ app.use(session({
 }))
 
 massive(CONNECTION_STRING).then(db=>{
-    app.set('db',db);
+    app.set('db',db)
+    console.log('DB connected');
 });
+
+
+// app.use(authMid.bypassAuthInDevelopment)
 ///////////////////////////AUTH 0/////////////////////////
 app.get('/auth/callback', (req, res) => {
   
@@ -106,9 +111,10 @@ app.get('/auth/callback', (req, res) => {
   
 ///////////////////////////AUTH 0/////////////////////////
 //////////////////MY CODE////////////////////////////////
+app.get('/api/users',ctrl.getAllUsers)
+app.get('/api/appointment/:id',ctrl.getAllAptByUser)
 
-
-
+app.delete('/api/appointment/:id',ctrl.deleteApt)
 
 
 
@@ -117,5 +123,5 @@ app.get('/auth/callback', (req, res) => {
 
 const port=process.env.SERVER_PORT || 3001
 app.listen(SERVER_PORT,()=>{
-    console.log(`Server is listening on port:${SERVER_PORT}`)
+    console.log(`Server is listening on port:${port}`)
 });

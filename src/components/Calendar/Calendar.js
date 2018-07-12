@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import DatePicker from 'react-datepicker';
+import {Link} from 'react-router-dom';
 import moment from 'moment';
 import './Calendar.css';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -41,7 +42,7 @@ class Calendar extends Component {
           onChange={this.handleChange}
           showTimeSelect
           timeFormat="HH:mm"
-          timeIntervals={15}
+          timeIntervals={30}
           dateFormat="LLL"
           timeCaption="time"
           />
@@ -58,6 +59,7 @@ class Calendar extends Component {
             
             </div> */}
         </div>
+        <Link to='/Dashboard'><button>Schedule</button></Link>
     </div>      
   </div>
   }
