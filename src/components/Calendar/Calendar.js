@@ -15,20 +15,22 @@ class Calendar extends Component {
     super(props)
     this.state = {
       startDate: moment(),
-      appointment: moment().format('LT')
+      appointment:''
     }
   }
 
   handleChange=(date)=> {
+    console.log(date)
+    console.log(date._d)
     this.setState({
-      startDate: date
+      appointment: date
+    });
+  }
+  handleChangeTime=(date)=> {
+    this.setState({
+      startTime: date
     });console.log(this.state)
   }
-  // handleChangeTime=(date)=> {
-  //   this.setState({
-  //     startTime: date
-  //   });console.log(this.state)
-  // }
 
   render() {
     return <div className='Apt-scheduler'>
@@ -46,7 +48,7 @@ class Calendar extends Component {
           dateFormat="LLL"
           timeCaption="time"
           />
-            {/* <div className='Time'>
+            <div className='Time'>
               <DatePicker
                 selected={this.state.startDate}
                 onChange={this.handleChangeTime}
@@ -57,7 +59,7 @@ class Calendar extends Component {
                 timeCaption="Time"
                 />
             
-            </div> */}
+            </div>
         </div>
         <Link to='/Dashboard'><button>Schedule</button></Link>
     </div>      

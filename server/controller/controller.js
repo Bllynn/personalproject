@@ -1,17 +1,26 @@
 module.exports={
-    getAllUsers: async (req,res) => {
+    getUserById: async (req,res) => {
         try {
             const db = req.app.get('db')
-            let allUsers = await db.get_all_users()
-            return res.status(200).send(allUsers)
+            let user = await db.get_all_users_by_id()
+            return res.status(200).send(user)
         }catch(err) {
                 console.log(err)
         }
     },
+    // getAllUsers: async (req,res) => {
+    //     try {
+    //         const db = req.app.get('db')
+    //         let allUsers = await db.get_all_users()
+    //         return res.status(200).send(allUsers)
+    //     }catch(err) {
+    //             console.log(err)
+    //     }
+    // },
     deleteApt: async(req,res)=>{
         try{
             const db=req.app.get('db')
-            let apt = await db.delete_apt([+req.params.id])
+            let apt = await db.delete_apt([+req.params.id,req.session.user.id])
             return res.status(200).send(apt)
         }catch(err){
             console.log(err)

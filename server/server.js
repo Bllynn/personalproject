@@ -3,7 +3,9 @@ const express = require('express'),
         session = require('express-session'),
         axios = require('axios'),
         massive = require('massive'),
-        ctrl = require('./controller/controller')
+        ctrl = require('./controller/controller'),
+        authMid= require('./middleware/authMiddleware')
+
 require('dotenv').config();
 app.use(express.json());
 let {
@@ -27,7 +29,7 @@ massive(CONNECTION_STRING).then(db=>{
 });
 
 
-// app.use(authMid.bypassAuthInDevelopment)
+app.use(authMid.bypassAuthInDevelopment)
 ///////////////////////////AUTH 0/////////////////////////
 app.get('/auth/callback', async (req,res)=>{
   //code from auth0 on req.query.code

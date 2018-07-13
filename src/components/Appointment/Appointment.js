@@ -2,6 +2,12 @@ import React from 'react';
 
 
 export default function Appointment(props){
-    <div className='apt-comp'>This is an Appointment
-    <button onClick={props.handleClick}>Cancel Apt</button></div>
+    return(
+    <div className='apt-comp'>
+    <p>
+    {props.time}
+    </p>
+    <button onClick={()=>props.delete(props.id)}>Cancel Apt</button></div>
+        
+    )
 }
