@@ -16,9 +16,9 @@ const routes = (
     <Provider store={store}>
     <Switch>
       <Route exact path="/" component={App}/>
-      <Route path='/About' component={About}/>
-      <Route path='/Calendar' component={Calendar}/>
-      <Route path='/Dashboard' component={Dashboard}/>
+      <Route path='/about' component={About}/>
+      <Route path='/calendar' component={Calendar}/>
+      <Route path='/dashboard' component={Dashboard}/>
     </Switch>
     </Provider>
     </HashRouter>

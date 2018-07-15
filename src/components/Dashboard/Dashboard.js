@@ -2,72 +2,71 @@ import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import{getUserData} from '../../dux/reducer';
+import {getAppointmentData} from '../../dux/reducer';
 import Appointment from '../Appointment/Appointment'
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import Navigation from '../Navigation/Navigation';
 
 
 class Dashboard extends Component{
     constructor(){
         super()
-        this.state={
-            users:[],
-            appointment:[]
-        }
+     
     }
     componentDidMount(){
-        axios.get('/api/appointment').then((appointment)=>{
-            this.setState({
-                appointment:appointment.data
-            })
+        axios.get('/api/user-data').then(user=>{
+            console.log(11111111111, user.data)
+            this.props.getUserData(user.data)
         })
-        axios.get('/api/users').then(users=>{
-            this.setState({
-                users:users.data
-            })
+        axios.get('/api/appointment').then((appointment)=>{
+            console.log(22222222222222, appointment)
+            this.props.getAppointmentData(appointment.data)
         })
     }
-    // myAppointments=()=>{
-    //     axios.get('/api/appointment').then(appointment=>{
-    //        return this.setState({
-    //             appointment:appointment.data
-    //         })
+  
+    // deleteApt=(id)=>{
+    //     axios.delete('/api/appointment/'+id).then(appointment=>{
+    //         if(id===appointment.id){
+    //             return appointment.data.splice(1,id)
+    //             this.setState({
+    //                 appointment:appointment.data
+
+    //             })
+    //         };
     //     })
     // };
-    deleteApt=(id)=>{
-        axios.delete('/api/appointment/'+id).then(appointment=>{
-            if(id===appointment.id){
-                return appointment.data.splice(1,id)
-                this.setState({
-                    appointment:appointment.data
-
-                })
-            };
-        })
-    };
     logout() {
         axios.post('/api/logout').then(() => {
-          this.setState({ user:[]});
-        });
-      }
-
+            this.props.state({
+                users:{}
+            })
+    })
+}
+whatIsProps=()=>{
+    return console.log(this.props.appointment.map((e,id)=>{
+        }))
+    
+}
     render(){
-        let appointments=this.state.appointment.map((e,id)=>{
-            return(
-                <Appointment
-                time={e.time}
-                key={e.id}
-                id={e.id}
-                delete={this.deleteApt}/>
-            )
-        })
+        
+        // let appointments = this.props.appointment.map((e,id)=>{
+        //     return(
+        //         <Appointment
+        //         time={e.time}
+        //         key={e.id}
+        //         id={e.id}
+        //         delete={this.deleteApt}/>
+        //     )
+        // })
         return(
             <div className='dashboard-view'>
+            <Navigation/>
             <button
-            onClick={console.log(this.state)}>Any appointments?</button>
+            onClick={this.whatIsProps}>Any appointments?</button>
             Dashboard SCREWDRIVER
             <Link to='/Calendar'><button>New Appointment</button></Link>
-            {appointments}
+            {/* {appointments} */}
             <button onClick={this.logout}>logout</button>
             </div>
         )
@@ -76,13 +75,16 @@ class Dashboard extends Component{
 
 }
 
-// function moveFromStateToProps(state){
-//     return{
-//         users:state.users,
-//         appointments:state.appointments
-//     }
-// }
-// let connectedFunction=connect(moveFromStateToProps,actions);
-// let ConnectedDashboard=connectedFunction(Dashboard)
-// export default ConnectedDashboard
-export default Dashboard
+function mapStateToProps(state){
+    return{
+        user:state.user,
+        appointment:state.appointment
+    }
+}
+
+const actions = {
+    getUserData,
+    getAppointmentData
+}
+
+export default connect(mapStateToProps, actions)(Dashboard)

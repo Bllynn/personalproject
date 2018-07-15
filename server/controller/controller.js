@@ -29,6 +29,7 @@ module.exports={
     getAllAptByUser: async(req,res)=>{
         try{
             const db=req.app.get('db')
+            console.log(req)
             let userapt = await db.apts_by_user_id([+req.session.user.id])
             return res.status(200).send(userapt)
         }catch(err){

@@ -63,14 +63,20 @@ app.get('/auth/callback', async (req,res)=>{
       }
 });
   
-  app.post('/api/logout', (req, res) => {
-    req.session.destroy();
-    res.send();
-  });
-  
-  app.get('/api/user-data', (req, res) => {
-    res.json({ user: req.session.user });
-  });
+app.get('/api/user-data', (req,res)=>{
+
+  if(req.session.user){//if we have a user(we should becuase of lines 47,and 51 above)
+      res.status(200).send(req.session.user)
+  } else {
+      res.status(401).send('Almost...');
+  }
+});
+
+
+app.post('/api/logout',(req,res)=>{
+  req.session.destroy();
+  res.redirect('http://localhost:3000/#/');
+})
   
   function checkLoggedIn(req, res, next) {
     if (req.session.user) {
@@ -86,7 +92,10 @@ app.get('/auth/callback', async (req,res)=>{
   
 ///////////////////////////AUTH 0/////////////////////////
 //////////////////MY CODE////////////////////////////////
-app.get('/api/users',ctrl.getAllUsers)
+
+
+// app.get('/api/users',ctrl.getAllUsers)
+
 app.get('/api/appointment/',ctrl.getAllAptByUser)
 
 app.delete('/api/appointment/:id',ctrl.deleteApt)
