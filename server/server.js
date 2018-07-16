@@ -73,7 +73,7 @@ app.get('/api/user-data', (req,res)=>{
 });
 
 
-app.post('/api/logout',(req,res)=>{
+app.get('/api/logout',(req,res)=>{
   req.session.destroy();
   res.redirect('http://localhost:3000/#/');
 })

@@ -20,7 +20,7 @@ module.exports={
     deleteApt: async(req,res)=>{
         try{
             const db=req.app.get('db')
-            let apt = await db.delete_apt([+req.params.id,req.session.user.id])
+            let apt = await db.delete_apt([+req.params.id,+req.session.user.id])
             return res.status(200).send(apt)
         }catch(err){
             console.log(err)
@@ -29,7 +29,6 @@ module.exports={
     getAllAptByUser: async(req,res)=>{
         try{
             const db=req.app.get('db')
-            console.log(req)
             let userapt = await db.apts_by_user_id([+req.session.user.id])
             return res.status(200).send(userapt)
         }catch(err){

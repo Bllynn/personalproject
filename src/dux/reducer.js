@@ -1,10 +1,19 @@
 const initialState={
     user:{},
-    appointment:{}
+    appointment:[]
 }
 const USER_DATA='USER_DATA';
 const APPOINTMENT_DATA='APPOINTMENT_DATA'
+const DELETE_APT='DELETE_APT'
+const LOGOUT='LOGOUT'
 
+export function deleteAppointment(newApt){
+    console.log(newApt)
+    return{
+        type:DELETE_APT,
+        payload: newApt
+    }
+}
 export function getAppointmentData(apt){
     console.log(apt)
     return{
@@ -20,10 +29,17 @@ export function getUserData(user){
         payload:user
     }
 }
+export function logoutUser(){
+    return{
+        type:LOGOUT
+    }
+}
 
 
 export default function reducer(state=initialState,action){
     switch(action.type){
+        case DELETE_APT:
+            return Object.assign({}, state,{appointment:action.payload})
         case APPOINTMENT_DATA:
             return Object.assign({}, state, {appointment:action.payload})
         case USER_DATA:
