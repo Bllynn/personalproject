@@ -49,18 +49,20 @@ class Dashboard extends Component{
             )
         })
         return(
-            <div>
             <div className='dashboard-view'>
+
                 <Navigation/>
+
             <button>Any appointments?</button>
-            Dashboard
+            
+
             <Link to='/Calendar'><button>New Appointment</button></Link>
             {appointments}
             <a href="http://localhost:3001/api/logout">
                 <button>Logout</button>
-                </a>
+            </a>
             </div>
-            </div>
+            
         )
     }
     

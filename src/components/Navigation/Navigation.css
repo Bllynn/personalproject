@@ -14,26 +14,3 @@
     width:100vw;
     justify-content:flex-end;
 }
-.Welcome{
-    display: flex;
-    position: absolute;;
-    color:aqua;
-    justify-content: center;
-    align-content: center;
-    top:100px;
-    background-color:pink;
-    height:500px;
-    width:50%;
-}
-/* button{
-    display:flex;
-    position:absolute;
-    width:100px;
-    height:75px;
-    top:300px;
-    color:white;
-    border:none;
-    text-align:center;
-    border-radius:25px;
-    background-color:chartreuse;
-} */

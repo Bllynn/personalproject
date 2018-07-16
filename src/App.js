@@ -38,15 +38,11 @@ class App extends Component {
       : error.message;
   }
 
-  clickHandler=()=>{
-    return console.log('this is a thing that happens')
- }
 
   render() {
     return (
       <div className="App">
-      <Navigation
-      clickHandler={this.clickHandler}/>
+      <Navigation/>
         <div className='Welcome'>
         Welcome to the schedule meister! Please log in to veiw or schedule any appointments
           <button

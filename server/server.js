@@ -102,6 +102,14 @@ app.delete('/api/appointment/:id',ctrl.deleteApt)
 
 app.post('/api/appointment', ctrl.createAppointment)
 
+app.get('/api/user-picture', (req,res)=>{
+
+    if(req.session.user){//if we have a user
+        res.status(200).send(req.session.user)
+    } else {
+        res.status(401).send('Please log in to acces this feature...');
+    }
+  });
 
 
 

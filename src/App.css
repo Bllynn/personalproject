@@ -5,3 +5,24 @@
   height:100vh;
   background-color:magenta;
 }
+.Welcome{
+  position: absolute;;
+  color:aqua;
+  justify-content: center;
+  align-content: center;
+  top:100px;
+  background-color:pink;
+  height:500px;
+  width:50%;
+}
+button{
+  display:flex;
+  position:relative;
+  width:100px;
+  height:40px;
+  color:white;
+  border:none;
+  text-align:center;
+  border-radius:25px;
+  background-color:chartreuse;
+}
