@@ -5,12 +5,12 @@ const initialState={
 const USER_DATA='USER_DATA';
 const APPOINTMENT_DATA='APPOINTMENT_DATA'
 const DELETE_APT='DELETE_APT'
-const UPDATE_APT='UPDATE_APT'
+const CREATE_WORKOUT='CREATE_WORKOUT'
 
-export function newAppointment(newApt){
+export function createAppointment(newApt){
     console.log(newApt)
     return{
-        type:UPDATE_APT,
+        type:CREATE_WORKOUT,
         payload:newApt
     }
 }
@@ -41,7 +41,7 @@ export function getUserData(user){
 
 export default function reducer(state=initialState,action){
     switch(action.type){
-        case UPDATE_APT:
+        case CREATE_WORKOUT:
             return Object.assign({}, state,{appointment:action.payload})
         case DELETE_APT:
             return Object.assign({}, state,{appointment:action.payload})

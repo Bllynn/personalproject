@@ -2,7 +2,8 @@ module.exports={
     createAppointment: async(req,res)=>{
         try{
             const db = req.app.get('db')
-            let apt = await db.create_appointment()
+            const {date}=req.body
+            let apt = await db.create_appointment([date, +req.session.user.id])
             return res.status(200).send(apt)
         }catch(err){
             console.log(err)

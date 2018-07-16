@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import DatePicker from 'react-datepicker';
-import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import moment from 'moment';
 import './Calendar.css';
 import 'react-datepicker/dist/react-datepicker.css';
-import {newAppointment} from '../../dux/reducer';
+import {createAppointment} from '../../dux/reducer';
 import Navigation from '../Navigation/Navigation';
+
 
 // CSS Modules, react-datepicker-cssmodules.css
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
@@ -17,19 +17,25 @@ class Calendar extends Component {
     super(props)
     this.state = {
       date:moment(),
-      time:moment()
+      description:''
     }
   }
   handleAppointment=()=>{
-    axios.put('/api/appointment').then(()=>{
-      this.props.newAppointment()
+    console.log( moment(this.state.date).toISOString())
+    axios.post('/api/appointment',{
+        date:moment(this.state.date).toISOString(),
+    }).then((res)=>{
+      this.props.createAppointment(res.data)
+      this.props.history.push('/Dashboard')
+    }).catch(err=>{
+      console.log(err)
     })
   }
  
   handleChange=(date)=> {
-    console.log(date)
+    console.log(typeof date._d)
     this.setState({
-      date: date
+      date: date._d
     });
   }
   handleChangeTime=(date)=> {
@@ -46,7 +52,7 @@ class Calendar extends Component {
         <div className='Date'>
 
         <DatePicker
-
+          value={moment(this.state.date.toISOString())}
           onChange={this.handleChange}
           excludeDates={[moment(), moment().subtract(1, "days")]}
           placeholderText="Select a date other than today or yesterday"
@@ -64,19 +70,21 @@ class Calendar extends Component {
             
             </div>
         </div>
-        <Link to='/Dashboard'><button>Schedule</button></Link>
+       <button
+        onClick={this.handleAppointment}>Schedule</button>
     </div>      
   </div>
   }
 }
 function mapStateToProps(state){
   return{
+      user:state.user,
       appointment:state.appointment
   }
 }
 
 const actions = {
-  newAppointment
+  createAppointment
 }
 
 export default connect(mapStateToProps, actions)(Calendar)
