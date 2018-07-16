@@ -5,7 +5,8 @@ import axios from 'axios';
 import{getUserData} from '../../dux/reducer';
 import {getAppointmentData} from '../../dux/reducer';
 import {deleteAppointment} from '../../dux/reducer';
-import {logoutUser} from '../../dux/reducer';
+
+
 import Appointment from '../Appointment/Appointment'
 import 'react-datepicker/dist/react-datepicker.css';
 import Navigation from '../Navigation/Navigation';
@@ -21,7 +22,7 @@ class Dashboard extends Component{
         
             this.props.getUserData(user.data)
         })
-        axios.get('/api/appointment').then((appointment)=>{
+        axios.get('/api/appointment').then(appointment=>{
            
             this.props.getAppointmentData(appointment.data)
         })
@@ -50,8 +51,7 @@ class Dashboard extends Component{
         return(
             <div className='dashboard-view'>
             <Navigation/>
-            <button
-            onClick={this.whatIsProps}>Any appointments?</button>
+            <button>Any appointments?</button>
             Dashboard SCREWDRIVER
             <Link to='/Calendar'><button>New Appointment</button></Link>
             {appointments}
@@ -73,7 +73,6 @@ function mapStateToProps(state){
 }
 
 const actions = {
-    logoutUser,
     getUserData,
     getAppointmentData,
     deleteAppointment

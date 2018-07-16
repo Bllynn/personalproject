@@ -1,4 +1,13 @@
 module.exports={
+    createAppointment: async(req,res)=>{
+        try{
+            const db = req.app.get('db')
+            let apt = await db.create_appointment()
+            return res.status(200).send(apt)
+        }catch(err){
+            console.log(err)
+        }
+    },
     getUserById: async (req,res) => {
         try {
             const db = req.app.get('db')

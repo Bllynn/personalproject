@@ -100,7 +100,7 @@ app.get('/api/appointment/',ctrl.getAllAptByUser)
 
 app.delete('/api/appointment/:id',ctrl.deleteApt)
 
-
+app.put('/api/appointment', ctrl.createAppointment)
 
 
 
