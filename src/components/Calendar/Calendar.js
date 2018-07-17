@@ -47,7 +47,7 @@ class Calendar extends Component {
     })
   }
  
-  handleChange=(event)=> {
+dateChange=(event)=> {
     
     this.setState({
       date: event.target.value
@@ -71,7 +71,7 @@ timeChange=(event)=>{
         <div className='Date'>
         <form className={classes.container} noValidate>
         <TextField
-          onChange={this.handleChange}
+          onChange={this.dateChange}
               id="date"
               label="Please select a date"
               type="date"

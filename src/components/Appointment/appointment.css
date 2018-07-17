@@ -1,6 +1,7 @@
 .apt-comp{
-    align-content: center;
+    display:flex;
     position:relative;
+    align-content: center;
     justify-content: center;
     
 }

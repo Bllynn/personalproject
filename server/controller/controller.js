@@ -1,4 +1,14 @@
 module.exports={
+    editApt: async(req,res)=>{
+        try{
+            const db=req.app.get('db')
+            const {date}=req.body
+            let apt = await db.edit_apt([+req.params.id,date])
+            return res.status(200).send(apt)
+        }catch(err){
+            console.log(err)
+        }
+    },
     createAppointment: async(req,res)=>{
         try{
             const db = req.app.get('db')

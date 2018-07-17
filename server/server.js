@@ -98,6 +98,8 @@ app.get('/api/logout',(req,res)=>{
 
 app.get('/api/appointment/',ctrl.getAllAptByUser)
 
+app.put('/api/appointment/:id',ctrl.editApt)
+
 app.delete('/api/appointment/:id',ctrl.deleteApt)
 
 app.post('/api/appointment', ctrl.createAppointment)

@@ -6,7 +6,7 @@
   background-color:magenta;
 }
 .Welcome{
-  position: absolute;;
+  position: absolute;
   color:aqua;
   justify-content: center;
   align-content: center;
@@ -16,6 +16,8 @@
   width:50%;
 }
 button{
+  cursor:pointer;
+  outline:none;
   display:flex;
   position:relative;
   width:100px;

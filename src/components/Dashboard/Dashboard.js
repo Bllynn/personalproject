@@ -4,9 +4,8 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import{getUserData} from '../../dux/reducer';
 import {getAppointmentData} from '../../dux/reducer';
+import {editAppointment} from '../../dux/reducer';
 import {deleteAppointment} from '../../dux/reducer';
-
-
 import Appointment from '../Appointment/Appointment'
 import 'react-datepicker/dist/react-datepicker.css';
 import Navigation from '../Navigation/Navigation';
@@ -15,6 +14,9 @@ import Navigation from '../Navigation/Navigation';
 class Dashboard extends Component{
     constructor(){
         super()
+        this.state={
+            showEdit:false
+        }
      
     }
     componentDidMount(){
@@ -27,7 +29,10 @@ class Dashboard extends Component{
             this.props.getAppointmentData(appointment.data)
         })
     }
-  
+    editApt=(id)=>{
+        axios.put('/api/appointment/'+id).then(appointment=>{
+        this.props.editAppointment(appointment.data)
+    })}
     deleteApt=(id)=>{
         axios.delete('/api/appointment/'+id).then(appointment=>{
             this.props.deleteAppointment(appointment.data)
@@ -35,16 +40,15 @@ class Dashboard extends Component{
     };
 
 
-    
-
     render(){
-        
+        let user =this.props.user
         let appointments = this.props.appointment.map((e,id)=>{
-            return( 
+            return(
                 <Appointment
                 time={e.time}
                 key={e.id}
                 id={e.id}
+                edit={this.editApt}
                 delete={this.deleteApt}/>
             )
         })
@@ -53,7 +57,8 @@ class Dashboard extends Component{
 
                 <Navigation/>
 
-            <button>Any appointments?</button>
+            <h1>Appointments for {user.first_name} {user.last_name}</h1>
+            
             
 
             <Link to='/Calendar'><button>New Appointment</button></Link>
@@ -77,6 +82,7 @@ function mapStateToProps(state){
 }
 
 const actions = {
+    editAppointment,
     getUserData,
     getAppointmentData,
     deleteAppointment
