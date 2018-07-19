@@ -7,19 +7,22 @@ import {getAppointmentData} from '../../dux/reducer';
 import {editAppointment} from '../../dux/reducer';
 import {deleteAppointment} from '../../dux/reducer';
 import Appointment from '../Appointment/Appointment'
-import 'react-datepicker/dist/react-datepicker.css';
 import Navigation from '../Navigation/Navigation';
+
 
 
 class Dashboard extends Component{
     constructor(){
         super()
         this.state={
-            showEdit:false
+            toggleEdit:false,
         }
      
     }
     componentDidMount(){
+        this.setState({
+            toggleEdit:false
+        })
         axios.get('/api/user-data').then(user=>{
         
             this.props.getUserData(user.data)
@@ -29,10 +32,18 @@ class Dashboard extends Component{
             this.props.getAppointmentData(appointment.data)
         })
     }
+    toggleEdit() {
+        console.log(this.state);
+        this.setState({
+          toggleEdit: !this.state.toggleEdit
+        })
+      }
+
     editApt=(id)=>{
         axios.put('/api/appointment/'+id).then(appointment=>{
         this.props.editAppointment(appointment.data)
     })}
+
     deleteApt=(id)=>{
         axios.delete('/api/appointment/'+id).then(appointment=>{
             this.props.deleteAppointment(appointment.data)
@@ -48,24 +59,26 @@ class Dashboard extends Component{
                 time={e.time}
                 key={e.id}
                 id={e.id}
-                edit={this.editApt}
+                showEdit={()=>this.toggleEdit()}
                 delete={this.deleteApt}/>
             )
         })
         return(
-            <div className='dashboard-view'>
-
+            <div className='dashboard'>
                 <Navigation/>
+                    <div className='appointment-list'>
+                    <img className='avatar'src={user.picture} alt="avatar"/>
+                    <h1>Appointments for {user.first_name} {user.last_name}</h1>
+                    <button>New Appointment</button>
+                    {appointments}
+                    <a href="http://localhost:3001/api/logout">
+                    <button>Logout</button>
+                    </a>
 
-            <h1>Appointments for {user.first_name} {user.last_name}</h1>
+                </div>
             
-            
-
-            <Link to='/Calendar'><button>New Appointment</button></Link>
-            {appointments}
-            <a href="http://localhost:3001/api/logout">
-                <button>Logout</button>
-            </a>
+               
+             
             </div>
             
         )

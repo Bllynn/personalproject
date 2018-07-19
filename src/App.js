@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
-import './components/Navigation/Navigation.css'
 import Navigation from './components/Navigation/Navigation';
 import axios from 'axios';
 

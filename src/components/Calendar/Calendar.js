@@ -4,15 +4,13 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import moment from 'moment';
-import './Calendar.css';
-import 'react-datepicker/dist/react-datepicker.css';
+
+// import 'react-datepicker/dist/react-datepicker.css';
 import {createAppointment} from '../../dux/reducer';
-import Navigation from '../Navigation/Navigation';
-
-
 
 // CSS Modules, react-datepicker-cssmodules.css
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+
 const styles = theme => ({
   container: {
     display: 'flex',
@@ -65,7 +63,6 @@ timeChange=(event)=>{
 
 
     return <div className='Apt-scheduler'>
-    <Navigation/>
     <div className='Calendar-Container'>
         <h1>Please select a date and time for your appointment:</h1>
         <div className='Date'>
@@ -75,7 +72,7 @@ timeChange=(event)=>{
               id="date"
               label="Please select a date"
               type="date"
-              defaultValue="2017-05-24"
+              defaultValue={moment().format("YYYY-MM-DD")}
               className={classes.textField}
               InputLabelProps={{
                 shrink: true,
@@ -90,7 +87,7 @@ timeChange=(event)=>{
             id="time"
             label="Please select a time"
             type="time"
-            defaultValue="07:30"
+            defaultValue="13:30"
             className={classes.textField}
             InputLabelProps={{
               shrink: true,

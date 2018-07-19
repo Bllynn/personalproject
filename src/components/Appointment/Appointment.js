@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
-import Calendar from '../Calendar/Calendar';
+
+
 
 
 
@@ -8,13 +9,14 @@ import Calendar from '../Calendar/Calendar';
 
 export default function Appointment(props){
         return(
-        <div className='apt-comp'>
+        <div className='appointment-card'>
             <p>What</p>
     
             <p>When: {moment(props.time).format('LLLL')}</p>
     
             <button
-            onClick={()=>props.edit(props.id)}>Edit Apt</button>
+            onClick={props.showEdit}>Edit Apt</button>
+            
             <button onClick={()=>props.delete(props.id)}>Cancel Apt</button>
         </div>        
         )
