@@ -23,14 +23,14 @@ export function createAppointment(newApt){
     }
 }
 export function deleteAppointment(newApt){
-    console.log(newApt)
+    
     return{
         type:DELETE_APT,
         payload: newApt
     }
 }
 export function getAppointmentData(apt){
-    console.log(apt)
+    
     return{
         type:APPOINTMENT_DATA,
         payload: apt
@@ -38,7 +38,7 @@ export function getAppointmentData(apt){
 }
 
 export function getUserData(user){
-    console.log(user)
+    
     return{
         type:USER_DATA,
         payload:user
@@ -49,6 +49,8 @@ export function getUserData(user){
 
 export default function reducer(state=initialState,action){
     switch(action.type){
+        case EDIT_APT:
+            return Object.assign({}, state,{appointment:action.payload})
         case CREATE_APPOINTMENT:
             return Object.assign({}, state,{appointment:action.payload})
         case DELETE_APT:

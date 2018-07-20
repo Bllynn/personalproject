@@ -13,8 +13,13 @@ module.exports={
         try{
             const db = req.app.get('db')
             const {date}=req.body
-            let apt = await db.create_appointment([date, +req.session.user.id])
-            return res.status(200).send(apt)
+            let apt = await db.check_appointment([date])
+            console.log(date)
+            if(apt[0]){
+                return res.status(200).send('T')
+            }else{
+                let aptchecked = await db.create_appointment([date, +req.session.user.id])
+                return res.status(200).send(aptchecked)}
         }catch(err){
             console.log(err)
         }

@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import{getUserData} from '../../dux/reducer';
@@ -8,6 +7,7 @@ import {editAppointment} from '../../dux/reducer';
 import {deleteAppointment} from '../../dux/reducer';
 import Appointment from '../Appointment/Appointment'
 import Navigation from '../Navigation/Navigation';
+import Calendar from '../Calendar/Calendar';
 
 
 
@@ -15,13 +15,15 @@ class Dashboard extends Component{
     constructor(){
         super()
         this.state={
-            toggleEdit:false,
+            toggleAppointment:false,
+
         }
      
     }
     componentDidMount(){
         this.setState({
-            toggleEdit:false
+
+            toggleAppointment:false,
         })
         axios.get('/api/user-data').then(user=>{
         
@@ -32,17 +34,15 @@ class Dashboard extends Component{
             this.props.getAppointmentData(appointment.data)
         })
     }
-    toggleEdit() {
+
+    toggleAppointment=()=>{
         console.log(this.state);
         this.setState({
-          toggleEdit: !this.state.toggleEdit
+          toggleAppointment: !this.state.toggleAppointment
         })
       }
 
-    editApt=(id)=>{
-        axios.put('/api/appointment/'+id).then(appointment=>{
-        this.props.editAppointment(appointment.data)
-    })}
+
 
     deleteApt=(id)=>{
         axios.delete('/api/appointment/'+id).then(appointment=>{
@@ -59,27 +59,30 @@ class Dashboard extends Component{
                 time={e.time}
                 key={e.id}
                 id={e.id}
-                showEdit={()=>this.toggleEdit()}
                 delete={this.deleteApt}/>
             )
         })
         return(
             <div className='dashboard'>
                 <Navigation/>
-                    <div className='appointment-list'>
+                <div className='appointment-list'>
                     <img className='avatar'src={user.picture} alt="avatar"/>
                     <h1>Appointments for {user.first_name} {user.last_name}</h1>
-                    <button>New Appointment</button>
-                    {appointments}
-                    <a href="http://localhost:3001/api/logout">
-                    <button>Logout</button>
-                    </a>
+                    <button onClick={()=>this.toggleAppointment()}>New Appointment</button>
+                    <div className={this.state.toggleAppointment ? 'show-apt hide-apt': 'hide-apt'}>
+                        <Calendar
+                        toggle={this.toggleAppointment}/>
 
                 </div>
+                        <a href="http://localhost:3001/api/logout">
+                            <button>Logout</button>
+                        </a>
+                {appointments}
             
                
              
             </div>
+        </div>
             
         )
     }

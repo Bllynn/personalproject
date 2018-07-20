@@ -1,0 +1,1 @@
+select * from appointments where time=$1

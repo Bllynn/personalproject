@@ -5,12 +5,12 @@ export default function Navigation(props){
     return(
         <div className='Menu'>
             Menu
-            <ul className='Nav-bar'>
-                <li><Link to='/'>Log In</Link></li>
-                <li><Link to='/dashboard'>Home</Link></li>
-                <li><Link to='/calendar'>Calendar</Link></li>
-                <li><Link to='/about'>About</Link></li>
-            </ul>
+            <div className='Nav-bar'>
+                <h3><Link to='/'>Log In</Link></h3>
+                <h3><Link to='/dashboard'>Home</Link></h3>
+                <h3><Link to='/calendar'>Calendar</Link></h3>
+                <h3><Link to='/about'>About</Link></h3>
+            </div>
         </div>
             
     )

@@ -4,10 +4,43 @@ import Navigation from '../Navigation/Navigation';
 
 
 export default function about(){
+    // Sets the number of stars we wish to display
+const numStars = 100;
+
+// For every star we want to display
+for (let i = 0; i < numStars; i++) {
+  let star = document.createElement("div");  
+  star.className = "star";
+  var xy = getRandomPosition();
+  star.style.top = xy[0] + 'px';
+  star.style.left = xy[1] + 'px';
+  document.body.append(star);
+}
+
+// Gets random x, y values based on the size of the container
+function getRandomPosition() {  
+  var y = window.innerWidth;
+  var x = window.innerHeight;
+  var randomX = Math.floor(Math.random()*x);
+  var randomY = Math.floor(Math.random()*y);
+  return [randomX,randomY];
+}
    return (
-   <div className='About'>
-   <Navigation/>
-   <Link to='/'><button className='abtbtn'>Return</button></Link>
+   
+    <div className='About'>
+    <Navigation/>
+    <Link to='/'><button className='abtbtn'>Return</button></Link>
+    <div className='text'>
+    <section class="intro">
+    A long time ago, in a galaxy far, far away....
+    </section>
+
+    <div id="board">  
+  <div id="content">
+    <p id="title">Massage Therapy</p>
+    <p id="subtitle">Becuase I'm Bored</p>
+   
+    <p>This has absolutely NOTHING to do with my project, just thoguht it would be cool to have scrolling text:</p>    
         <p>
             Massage therapy is a treatment approach which is growing in demand and popularity. It was once considered an alternative or fringe approach, but it is now becoming much more mainstream. More importantly, now that massage therapy is considered a mainstream treatment option, many insurance companies provide coverage for treatment sessions. This form of therapy involves hands-on techniques to increase circulation, relieve tension, reduce stress, relieve anxiety, improve sleep, and promote relaxation throughout the entire body, as well as many other benefits. The body’s soft tissue areas include the muscles, tendons, connective tissue, etc. If someone is tense and in need of a release, or they have been injured and have extensive muscle and/or nerve tissue damage that plagues their body, massage therapy might be worth exploring. Here are some benefits of massage therapy.
         </p>
@@ -51,6 +84,11 @@ export default function about(){
         <p>
             Once considered an alternative or fringe approach, massage therapy is now much more mainstream and growing in popularity. More importantly, now that massage therapy is considered a mainstream treatment option, many insurance companies provide coverage for treatment sessions. This form of therapy involves hands-on techniques to increase circulation, relieve tension, reduce stress, relieve anxiety, improve sleep, and promote relaxation throughout the entire body, as well as many other benefits.
         </p>
+
+
+    </div>
+    </div>
+    </div>
     </div>
    ) 
 }

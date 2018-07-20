@@ -35,13 +35,13 @@ class Calendar extends Component {
     const timeString=this.state.date+' '+this.state.time
     const timeChecker = moment(timeString,'YYYY-MM-DD HH:mm').toISOString()
     
-    axios.post('/api/appointment',{
+    axios.put('/api/appointment',{
         date:timeChecker,
     }).then((res)=>{
       if(res.data==='T'){
         alert('Appointment time is unavailable')
       }else{
-        this.props.createAppointment(res.data)
+        this.props.edit_apt(res.data)
         
         this.props.toggle()
 }
@@ -68,9 +68,8 @@ timeChange=(event)=>{
 
 
     return (
-    <div className='Apt-scheduler'>
-    <div className='Calendar-Container'>
-        <h1>Please select a date and time for your appointment:</h1>
+    
+    <div className='Edit'>
         <div className='Date'>
         <form className={classes.container} noValidate>
         <TextField
@@ -105,12 +104,13 @@ timeChange=(event)=>{
         </form>
 
             
+        </div><button
+        onClick={this.handleAppointment}>Done Editing
+        </button>
         </div>
-        </div>
-       <button
-        onClick={this.handleAppointment}>Schedule</button>
+       
     </div>      
-  </div>)
+  )
   }
 }
 function mapStateToProps(state){
