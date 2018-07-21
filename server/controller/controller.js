@@ -1,24 +1,28 @@
 module.exports={
-    editApt: async(req,res)=>{
-        try{
-            const db=req.app.get('db')
-            const {date}=req.body
-            let apt = await db.edit_apt([+req.params.id,date])
-            return res.status(200).send(apt)
-        }catch(err){
-            console.log(err)
-        }
-    },
+
     createAppointment: async(req,res)=>{
         try{
             const db = req.app.get('db')
             const {date}=req.body
             let apt = await db.check_appointment([date])
-            console.log(date)
             if(apt[0]){
                 return res.status(200).send('T')
             }else{
                 let aptchecked = await db.create_appointment([date, +req.session.user.id])
+                return res.status(200).send(aptchecked)}
+        }catch(err){
+            console.log(err)
+        }
+    },
+    editApt: async(req,res)=>{
+        try{
+            const db = req.app.get('db')
+            const {date}=req.body
+            let apt = await db.check_appointment([date])
+            if(apt[0]){
+                return res.status(200).send('T')
+            }else{
+                let aptchecked = await db.edit_apt([+req.params.id, date, +req.session.user.id])
                 return res.status(200).send(aptchecked)}
         }catch(err){
             console.log(err)

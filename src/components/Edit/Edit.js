@@ -4,9 +4,10 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import moment from 'moment';
+import editAppointment from '../../dux/reducer';
 
 // import 'react-datepicker/dist/react-datepicker.css';
-import {createAppointment} from '../../dux/reducer';
+
 
 // CSS Modules, react-datepicker-cssmodules.css
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
@@ -24,27 +25,35 @@ const styles = theme => ({
 });
 
 class Calendar extends Component {
-  constructor (props) {
-    super(props)
+  constructor () {
+    super()
     this.state = {
       date:'',
       time:''
     }
   }
-  handleAppointment=()=>{
+  componentDidMount(){
+    this.setState({
+      date:moment(this.props.aptTime).format('YYYY-MM-DD'),
+    time:moment(this.props.aptTime).format('HH:mm')
+    })
+  }
+
+
+  handleEdit=(id)=>{
     const timeString=this.state.date+' '+this.state.time
     const timeChecker = moment(timeString,'YYYY-MM-DD HH:mm').toISOString()
     
-    axios.put('/api/appointment',{
+    axios.put('/api/appointment/'+id,{
         date:timeChecker,
     }).then((res)=>{
-      if(res.data==='T'){
-        alert('Appointment time is unavailable')
+      if(res.data ==='T'){
+        alert(`Appointment time of ${this.state.time} is unavailable for ${this.state.date}`)
       }else{
-        this.props.edit_apt(res.data)
-        
+        console.log(res.data)
         this.props.toggle()
-}
+        this.props.editAppointment(res.data)
+      }
     }).catch(err=>{
       console.log(err)
     })
@@ -66,7 +75,6 @@ timeChange=(event)=>{
   render() {
     const { classes } = this.props;
 
-
     return (
     
     <div className='Edit'>
@@ -77,7 +85,7 @@ timeChange=(event)=>{
               id="date"
               label="Please select a date"
               type="date"
-              defaultValue={moment().format("YYYY-MM-DD")}
+              defaultValue={moment(this.props.aptTime).format("YYYY-MM-DD")}
               className={classes.textField}
               InputLabelProps={{
                 shrink: true,
@@ -92,7 +100,7 @@ timeChange=(event)=>{
             id="time"
             label="Please select a time"
             type="time"
-            defaultValue="13:30"
+            defaultValue={moment(this.props.aptTime).format('HH:mm')}
             className={classes.textField}
             InputLabelProps={{
               shrink: true,
@@ -105,7 +113,7 @@ timeChange=(event)=>{
 
             
         </div><button
-        onClick={this.handleAppointment}>Done Editing
+        onClick={()=>this.handleEdit(this.props.aptId)}>Done Editing
         </button>
         </div>
        
@@ -121,7 +129,7 @@ function mapStateToProps(state){
 }
 
 const actions = {
-  createAppointment
+  editAppointment
 }
 
 export default connect(mapStateToProps, actions)(withStyles(styles)(Calendar))

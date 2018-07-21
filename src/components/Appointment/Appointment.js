@@ -3,7 +3,7 @@ import moment from 'moment';
 import Edit from '../Edit/Edit';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import editApt from '../../dux/reducer';
+import editAppointment from '../../dux/reducer';
 
 
 
@@ -19,28 +19,26 @@ class Appointment extends Component{
         }
     }
     toggleEdit=()=>{
-        console.log(this.state);
         this.setState({
           toggleEdit: !this.state.toggleEdit
         })
       }
-
-    editAppointment=(id)=>{
-        axios.put('/api/appointment/'+id).then(appointment=>{
-        this.props.editApt(appointment)
-    })}
         render(){
             return(
                 <div className='appointment-card'>
-                    <h3>What</h3>
+                <h3>Date:{moment(this.props.time).format('MMMM, Do')}</h3>
+                    <h3>Day: {moment(this.props.time).format('dddd')}</h3>
             
                     <h3>
-                        When: {moment(this.props.time).format('LLLL')}
+                        When: {moment(this.props.time).format('hh:mm a')}
                         
                     </h3>
                     <div className={this.state.toggleEdit ? 'show-edit hide-edit': 'hide-edit'}>
                                 <Edit
-                                edit={this.editAppointment}/>
+                                aptTime={this.props.time}
+                                aptId={this.props.id}
+                                toggle={this.toggleEdit}
+                                />
         
                         </div>
                     <div className='editButtons'>
@@ -65,6 +63,6 @@ function mapStateToProps(state){
   }
   
   const actions = {
-    editApt
+    editAppointment
   }
   export default connect(mapStateToProps,actions)(Appointment)

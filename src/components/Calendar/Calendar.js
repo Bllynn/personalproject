@@ -38,14 +38,15 @@ class Calendar extends Component {
     axios.post('/api/appointment',{
         date:timeChecker,
     }).then((res)=>{
-      if(res.data==='T'){
-        alert('Appointment time is unavailable')
+      if(res.data ==='T'){
+        alert(`Appointment time of ${this.state.time} is unavailable for ${this.state.date}`)
       }else{
+        console.log(res.data)
         this.props.createAppointment(res.data)
         
         this.props.toggle()
 }
-    }).catch(err=>{
+    }).catch(err=>{ 
       console.log(err)
     })
   }
@@ -93,7 +94,7 @@ timeChange=(event)=>{
             id="time"
             label="Please select a time"
             type="time"
-            defaultValue="13:30"
+            defaultValue={moment().format('HH:mm')}
             className={classes.textField}
             InputLabelProps={{
               shrink: true,

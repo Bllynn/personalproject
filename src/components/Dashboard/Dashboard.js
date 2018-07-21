@@ -68,7 +68,7 @@ class Dashboard extends Component{
                 <div className='appointment-list'>
                     <img className='avatar'src={user.picture} alt="avatar"/>
                     <h1>Appointments for {user.first_name} {user.last_name}</h1>
-                    <button onClick={()=>this.toggleAppointment()}>New Appointment</button>
+                    <button onClick={this.toggleAppointment}>New Appointment</button>
                     <div className={this.state.toggleAppointment ? 'show-apt hide-apt': 'hide-apt'}>
                         <Calendar
                         toggle={this.toggleAppointment}/>
