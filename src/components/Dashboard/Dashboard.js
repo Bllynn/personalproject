@@ -36,7 +36,6 @@ class Dashboard extends Component{
     }
 
     toggleAppointment=()=>{
-        console.log(this.state);
         this.setState({
           toggleAppointment: !this.state.toggleAppointment
         })
@@ -74,14 +73,14 @@ class Dashboard extends Component{
                         toggle={this.toggleAppointment}/>
 
                 </div>
-                        <a href="http://localhost:3001/api/logout">
-                            <button>Logout</button>
-                        </a>
                 {appointments}
             
                
              
             </div>
+                        <a href="http://localhost:3001/api/logout">
+                            <button>Logout</button>
+                        </a>
         </div>
             
         )

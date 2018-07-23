@@ -9,7 +9,6 @@ const DELETE_APT='DELETE_APT'
 const CREATE_APPOINTMENT='CREATE_APPOINTMENT'
 
 export function editAppointment(newApt){
-    console.log(newApt)
     return{
         type:EDIT_APT,
         payload:newApt

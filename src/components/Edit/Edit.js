@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import moment from 'moment';
-import editAppointment from '../../dux/reducer';
+import {editAppointment} from '../../dux/reducer';
 
 // import 'react-datepicker/dist/react-datepicker.css';
 
@@ -47,10 +47,12 @@ class Calendar extends Component {
     axios.put('/api/appointment/'+id,{
         date:timeChecker,
     }).then((res)=>{
-      if(res.data ==='T'){
+      if(res.data ==='F'){
+        alert(`Cannot schedule appointment that has already passed`)
+      }
+      else if(res.data ==='T'){
         alert(`Appointment time of ${this.state.time} is unavailable for ${this.state.date}`)
       }else{
-        console.log(res.data)
         this.props.toggle()
         this.props.editAppointment(res.data)
       }

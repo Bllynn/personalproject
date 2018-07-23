@@ -39,11 +39,14 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="Main">
       <Navigation/>
         <div className='Welcome'>
-        Welcome to the schedule meister! Please log in to veiw or schedule any appointments
-          <button
+        <h1>
+          Welcome to the schedule meister! Please log in to veiw or schedule any appointments
+        </h1>
+          
+          <button className='loginbutton'
             onClick={this.login}>Sign In
             </button>
             </div>

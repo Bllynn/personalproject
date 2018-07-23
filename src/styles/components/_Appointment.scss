@@ -1,10 +1,9 @@
 @import '../variables';
 .appointment-card{
-    // box-sizing: border-box;
     display: flex;
-    margin:50px auto;
-    height:200px;
+    height:225px;
     width:500px;
+    margin:50px auto;
     flex-direction: column;
     align-items: center;
     background-color:pink;
@@ -13,7 +12,8 @@
     justify-content: center;
 }
 .editButtons{
-    justify-content: space-between;
+    width:100%;
+    justify-content: space-around;
     display:flex
 
 }
@@ -21,7 +21,6 @@
     transition: height .5s ease-in;
     z-index: 9999;
     background:pink;
-    padding:0 80px;
     height:0px;
     overflow:hidden;
 }

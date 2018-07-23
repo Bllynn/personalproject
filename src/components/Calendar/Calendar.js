@@ -31,6 +31,12 @@ class Calendar extends Component {
       time:''
     }
   }
+  componentDidMount(){
+    this.setState({
+      date:moment(this.props.aptTime).format('YYYY-MM-DD'),
+    time:moment(this.props.aptTime).format('hh:mm')
+    })
+  }
   handleAppointment=()=>{
     const timeString=this.state.date+' '+this.state.time
     const timeChecker = moment(timeString,'YYYY-MM-DD HH:mm').toISOString()
@@ -38,6 +44,9 @@ class Calendar extends Component {
     axios.post('/api/appointment',{
         date:timeChecker,
     }).then((res)=>{
+      if(res.data ==='F'){
+        alert(`Cannot schedule appointment that has already passed`)
+      }
       if(res.data ==='T'){
         alert(`Appointment time of ${this.state.time} is unavailable for ${this.state.date}`)
       }else{

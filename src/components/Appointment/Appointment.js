@@ -1,13 +1,6 @@
 import React, {Component} from 'react';
 import moment from 'moment';
 import Edit from '../Edit/Edit';
-import axios from 'axios';
-import { connect } from 'react-redux';
-import editAppointment from '../../dux/reducer';
-
-
-
-
 
 
 
@@ -55,14 +48,4 @@ class Appointment extends Component{
         }
 
 }
-function mapStateToProps(state){
-    return{
-        user:state.user,
-        appointment:state.appointment
-    }
-  }
-  
-  const actions = {
-    editAppointment
-  }
-  export default connect(mapStateToProps,actions)(Appointment)
+  export default Appointment

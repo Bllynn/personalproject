@@ -8,7 +8,6 @@
     width:auto;
 }
 .hide-apt{
-//    visibility:hidden;
    transition: height .5s ease-in;
    z-index: 9999;
     background:#bada55;
@@ -22,7 +21,9 @@
 .show-apt{
     @extends .hide-apt;
     opacity:1;
-    height:200px;
-    // visibility: visible;
-    
+    height:225px;
+}
+.appointment-list{
+    display: flex;
+    flex-wrap:wrap;
 }
