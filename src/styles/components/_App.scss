@@ -5,19 +5,17 @@
   align-items: center;
   background-color:magenta;
 }
-.Main{
-    height:calc(100vh-70px);
-    background-color:purple;
-}
 a {
     color: inherit;
     text-decoration: inherit;
     cursor: pointer;
   }
 .Main{
-      display:flex;
-      flex-direction: column;
-      align-items: center;
+  height:100vh;
+  background-color:purple;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
   }
 .Welcome{
   text-align: center;
@@ -29,20 +27,6 @@ a {
   height:500px;
   width:75%;
 }
-.loginbutton{
-  cursor:pointer;
-  height: 100px;
-  width:100px;
-  border-radius:50%;
-  display:flex;
-  color:white;
-  text-align:center;
-  background-color:chartreuse;
-}
-button{
-  margin:10px 10px;
-  cursor:pointer;
-  outline:none;
-  border-radius:50%;
-  outline:none;
+.fas .fa-sign-in-alt:hover{
+  cursor: pointer;
 }

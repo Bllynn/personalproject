@@ -46,9 +46,9 @@ class App extends Component {
           Welcome to the schedule meister! Please log in to veiw or schedule any appointments
         </h1>
           
-          <button className='loginbutton'
-            onClick={this.login}>Sign In
-            </button>
+          <i class="fas fa-sign-in-alt"
+          onClick={this.login}>
+          </i>
             </div>
       </div>
     );

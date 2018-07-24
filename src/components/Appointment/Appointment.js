@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import moment from 'moment';
 import Edit from '../Edit/Edit';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 class Appointment extends Component{
@@ -35,10 +35,10 @@ class Appointment extends Component{
         
                         </div>
                     <div className='editButtons'>
-                    <button
-                    onClick={this.toggleEdit}>Edit Apt</button>
+                    <i class="far fa-edit"
+                    onClick={this.toggleEdit}></i>
                     
-                    <button onClick={()=>this.props.delete(this.props.id)}>Cancel Apt</button>
+                    <i class="far fa-trash-alt" onClick={()=>this.props.delete(this.props.id)}></i>
                 </div>        
                     
                     </div>

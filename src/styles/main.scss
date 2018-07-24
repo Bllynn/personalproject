@@ -3,17 +3,17 @@
 
 // ===== VARIABLES ===== //
 
-// @import 'variables';
-
+@import 'variables';
 // ===== FUNCTIONS ===== //
 
 // @import 'functions';
 
 // ===== MIXINS ===== //
-
-// @import 'mixins';
+@import 'mixins';
 
 // ===== COMPONENTS ===== //
+@import 'scss/solid.scss';
+@import 'scss/fontawesome.scss';
 
 @import './components/App';
 @import './components/About';

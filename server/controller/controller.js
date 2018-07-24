@@ -1,3 +1,4 @@
+const moment=require ('moment');
 module.exports={
 
     createAppointment: async(req,res)=>{
@@ -5,7 +6,10 @@ module.exports={
             const db = req.app.get('db')
             const {date}=req.body
             let apt = await db.check_appointment([date])
-            if(apt[0]){
+            if(moment(date).isBefore(moment())){
+                return res.status(200).send('F')
+            }
+            else if(apt[0]){
                 return res.status(200).send('T')
             }else{
                 let aptchecked = await db.create_appointment([date, +req.session.user.id])
@@ -19,7 +23,10 @@ module.exports={
             const db = req.app.get('db')
             const {date}=req.body
             let apt = await db.check_appointment([date])
-            if(apt[0]){
+            if(moment(date).isBefore(moment())){
+                return res.status(200).send('F')
+            }
+            else if(apt[0]){
                 return res.status(200).send('T')
             }else{
                 let aptchecked = await db.edit_apt([+req.params.id, date, +req.session.user.id])
