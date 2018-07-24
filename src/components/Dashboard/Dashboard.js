@@ -6,7 +6,6 @@ import {getAppointmentData} from '../../dux/reducer';
 import {editAppointment} from '../../dux/reducer';
 import {deleteAppointment} from '../../dux/reducer';
 import Appointment from '../Appointment/Appointment'
-import Navigation from '../Navigation/Navigation';
 import Calendar from '../Calendar/Calendar';
 
 
@@ -63,24 +62,20 @@ class Dashboard extends Component{
         })
         return(
             <div className='dashboard'>
-                <Navigation/>
-                <div className='appointment-list'>
-                    <img className='avatar'src={user.picture} alt="avatar"/>
+                <div className='dashboard2'> 
+                 <img className='avatar'src={user.picture} alt="avatar"/>
                     <h1>Appointments for {user.first_name} {user.last_name}</h1>
                     <button onClick={this.toggleAppointment}>New Appointment</button>
                     <div className={this.state.toggleAppointment ? 'show-apt hide-apt': 'hide-apt'}>
                         <Calendar
                         toggle={this.toggleAppointment}/>
+              
+                </div>
 
                 </div>
+                <div className='appointment-list'>
                 {appointments}
-            
-               
-             
             </div>
-                        <a href="http://localhost:3001/api/logout">
-                            <button>Logout</button>
-                        </a>
         </div>
             
         )

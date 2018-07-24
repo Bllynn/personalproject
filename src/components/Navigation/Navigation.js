@@ -32,19 +32,25 @@ class Navigation extends Component {
               </div>
           </div>
           <div className="nav-menu">
-          <h3><Link to='/'>Log In</Link></h3>
-                <h3><Link to='/dashboard'>Home</Link></h3>
-                <h3><Link to='/calendar'>Calendar</Link></h3>
-                <h3><Link to='/about'>About</Link></h3>
+          <h4><Link to='/'>Log In</Link></h4>
+                <h4><Link to='/dashboard'>Home</Link></h4>
+                <h4><Link to='/calendar'>Calendar</Link></h4>
+                <h4><Link to='/about'>About</Link></h4>
+                <h4><a href="http://localhost:3001/api/logout">
+                            Logout
+                        </a></h4>
           </div>
         </nav>
       </header>
       <div className={this.state.toggleNav ? 'show-nav mobile-nav' : 'mobile-nav'}>
         <div className="mobile-nav-content">
-        <h3><Link to='/'>Log In</Link></h3>
-                <h3><Link to='/dashboard'>Home</Link></h3>
-                <h3><Link to='/calendar'>Calendar</Link></h3>
-                <h3><Link to='/about'>About</Link></h3>
+        <h4><Link to='/'>Log In</Link></h4>
+                <h4><Link to='/dashboard'>Home</Link></h4>
+                <h4><Link to='/calendar'>Calendar</Link></h4>
+                <h4><Link to='/about'>About</Link></h4>
+                <h4><a href="http://localhost:3001/api/logout">
+                            Logout
+                        </a></h4>
         </div>
       </div>
       </div>

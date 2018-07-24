@@ -50,7 +50,6 @@ class Calendar extends Component {
       if(res.data ==='T'){
         alert(`Appointment time of ${this.state.time} is unavailable for ${this.state.date}`)
       }else{
-        console.log(res.data)
         this.props.createAppointment(res.data)
         
         this.props.toggle()

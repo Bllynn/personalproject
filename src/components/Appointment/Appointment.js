@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import moment from 'moment';
 import Edit from '../Edit/Edit';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 class Appointment extends Component{
@@ -17,15 +16,18 @@ class Appointment extends Component{
         })
       }
         render(){
+            let edit = this.state.toggleEdit? 'edit':'cardNormal'// declare variable that will be class string for appointment card
             return(
-                <div className='appointment-card'>
+                <div className='appointmentCard'>
+                <div className={edit}>
                 <h3>Date:{moment(this.props.time).format('MMMM, Do')}</h3>
                     <h3>Day: {moment(this.props.time).format('dddd')}</h3>
             
                     <h3>
-                        When: {moment(this.props.time).format('hh:mm a')}
+                        When: {moment(this.props.time).format('h:mm a')}
                         
                     </h3>
+                    </div>
                     <div className={this.state.toggleEdit ? 'show-edit hide-edit': 'hide-edit'}>
                                 <Edit
                                 aptTime={this.props.time}

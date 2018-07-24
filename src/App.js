@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Navigation from './components/Navigation/Navigation';
 import axios from 'axios';
 
 class App extends Component {
@@ -40,15 +39,17 @@ class App extends Component {
   render() {
     return (
       <div className="Main">
-      <Navigation/>
         <div className='Welcome'>
         <h1>
           Welcome to the schedule meister! Please log in to veiw or schedule any appointments
         </h1>
-          
+          <div className='signin'>
           <i class="fas fa-sign-in-alt"
           onClick={this.login}>
           </i>
+
+
+          </div>
             </div>
       </div>
     );

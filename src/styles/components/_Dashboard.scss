@@ -1,6 +1,7 @@
 @import '../variables';
 .dashboard{
-    display:inline;
+    margin:70px auto;
+    
 }
 .avatar{
     border-radius:50%;
@@ -9,9 +10,8 @@
 }
 .hide-apt{
    transition: height .5s ease-in;
-   z-index: 9999;
     background:#bada55;
-    display:inline-block;
+    display:flex;
     padding:0 80px;
     color:blue;
     width:100%;
@@ -20,10 +20,15 @@
 }
 .show-apt{
     @extends .hide-apt;
-    opacity:1;
     height:225px;
 }
 .appointment-list{
     display: flex;
     flex-wrap:wrap;
+    justify-content: space-around;
+}
+.dashboard2{
+    justify-content: center;
+    align-items:center;
+
 }
