@@ -44,15 +44,24 @@ module.exports={
                 console.log(err)
         }
     },
-    // getAllUsers: async (req,res) => {
-    //     try {
-    //         const db = req.app.get('db')
-    //         let allUsers = await db.get_all_users()
-    //         return res.status(200).send(allUsers)
-    //     }catch(err) {
-    //             console.log(err)
-    //     }
-    // },
+    getAllUsers: async (req,res) => {
+        try {
+            const db = req.app.get('db')
+            let allUsers = await db.get_all_users()
+            return res.status(200).send(allUsers)
+        }catch(err) {
+                console.log(err)
+        }
+    },
+    getAllAppointments: async (req,res) => {
+        try {
+            const db = req.app.get('db')
+            let allAppointments = await db.get_all_appointments()
+            return res.status(200).send(allAppointments)
+        }catch(err) {
+                console.log(err)
+        }
+    },
     deleteApt: async(req,res)=>{
         try{
             const db=req.app.get('db')

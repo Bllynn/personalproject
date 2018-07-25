@@ -47,7 +47,7 @@ class Calendar extends Component {
       if(res.data ==='F'){
         alert(`Cannot schedule appointment that has already passed`)
       }
-      if(res.data ==='T'){
+      else if(res.data ==='T'){
         alert(`Appointment time of ${this.state.time} is unavailable for ${this.state.date}`)
       }else{
         this.props.createAppointment(res.data)

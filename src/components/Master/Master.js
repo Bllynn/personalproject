@@ -4,13 +4,14 @@ import axios from 'axios';
 import{getUserData} from '../../dux/reducer';
 import {getAppointmentData} from '../../dux/reducer';
 import {editAppointment} from '../../dux/reducer';
-import {deleteAppointment} from '../../dux/reducer';
-import Appointment from '../Appointment/Appointment'
-import Calendar from '../Calendar/Calendar';
+import MasterBS from '../MasterBS/MasterBS';
 
 
 
-class Dashboard extends Component{
+
+
+
+class Master extends Component{
     constructor(){
         super()
         this.state={
@@ -24,11 +25,10 @@ class Dashboard extends Component{
 
             toggleAppointment:false,
         })
-        axios.get('/api/user-data').then(user=>{
-        
+        axios.get('/api/users').then(user=>{
             this.props.getUserData(user.data)
         })
-        axios.get('/api/appointment').then(appointment=>{
+        axios.get('/api/allappointments').then(appointment=>{
            
             this.props.getAppointmentData(appointment.data)
         })
@@ -50,10 +50,11 @@ class Dashboard extends Component{
 
 
     render(){
-        let user =this.props.user
         let appointments = this.props.appointment.map((e,id)=>{
             return(
-                <Appointment
+                <MasterBS
+                user={this.props.user}
+                client={e.client_id}
                 time={e.time}
                 key={e.id}
                 id={e.id}
@@ -62,21 +63,16 @@ class Dashboard extends Component{
         })
         return(
             <div className='dashboard'>
-                <div className='dashboard2'> 
-                 <img className='avatar'src={user.picture} alt="avatar"/>
-                    <h1>Appointments for {user.first_name} {user.last_name}</h1>
-                    <i class='far fa-calendar-alt'onClick={this.toggleAppointment}>New</i>
-                    <div className={this.state.toggleAppointment ? 'show-apt hide-apt': 'hide-apt'}>
-                        <Calendar
-                        toggle={this.toggleAppointment}/>
-              
+                <div className='dashboard2'>
+                 {/* <img className='avatar'src={user.picture} alt="avatar"/> */}
+                    <h1>All Appointments</h1>              
                 </div>
 
-                </div>
+               
                 <div className='appointment-list'>
                 {appointments}
             </div>
-        </div>
+         </div>
             
         )
     }
@@ -93,9 +89,8 @@ function mapStateToProps(state){
 
 const actions = {
     editAppointment,
-    getUserData,
     getAppointmentData,
-    deleteAppointment
+    getUserData
 }
 
-export default connect(mapStateToProps, actions)(Dashboard)
+export default connect(mapStateToProps, actions)(Master)

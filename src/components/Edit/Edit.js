@@ -114,7 +114,8 @@ timeChange=(event)=>{
         </form>
 
             
-        </div><i class="fas fa-check"
+        </div>
+        <i class="fas fa-check"
         onClick={()=>this.handleEdit(this.props.aptId)}>Done
         </i>
         </div>

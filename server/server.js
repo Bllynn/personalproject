@@ -94,9 +94,10 @@ app.get('/api/logout',(req,res)=>{
 //////////////////MY CODE////////////////////////////////
 
 
-// app.get('/api/users',ctrl.getAllUsers)
+app.get('/api/users',ctrl.getAllUsers)
 
 app.get('/api/appointment/',ctrl.getAllAptByUser)
+app.get('/api/allappointments/',ctrl.getAllAppointments)
 
 
 app.put('/api/appointment/:id',ctrl.editApt)

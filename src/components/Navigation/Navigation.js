@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 class Navigation extends Component {
   constructor(){
     super()
@@ -16,6 +16,12 @@ class Navigation extends Component {
   
   
   render() {
+    const { pathname } = this.props.location
+
+    let loginClass = pathname === "/" ? 'link-active' : 'link-inactive'
+    let calClass = pathname === "/calendar" ? 'link-active' : 'link-inactive'
+    let dashClass = pathname === "/dashboard" ? 'link-active' : 'link-inactive'
+    let abtClass = pathname === "/About" ? 'link-active' : 'link-inactive'
     return (
       <div className="App">
       <header>
@@ -32,22 +38,21 @@ class Navigation extends Component {
               </div>
           </div>
           <div className="nav-menu">
-          <h4><Link to='/'>Log In</Link></h4>
-                <h4><Link to='/dashboard'>Home</Link></h4>
-                <h4><Link to='/calendar'>Calendar</Link></h4>
-                <h4><Link to='/about'>About</Link></h4>
-                <h4><a href="http://localhost:3001/api/logout">
-                            Logout
+          <h4><Link className={ loginClass } to='/'>Log In</Link></h4>
+                <h4><Link className={dashClass} to='/dashboard'>Home</Link></h4>
+                <h4><Link className={calClass} to='/calendar'>Calendar</Link></h4>
+                <h4><Link className={abtClass} to='/about'>About</Link></h4>
+                <h4><a href="http://localhost:3001/api/logout"><i class="fas fa-sign-out-alt"></i>
                         </a></h4>
           </div>
         </nav>
       </header>
       <div className={this.state.toggleNav ? 'show-nav mobile-nav' : 'mobile-nav'}>
         <div className="mobile-nav-content">
-        <h4><Link to='/'>Log In</Link></h4>
-                <h4><Link to='/dashboard'>Home</Link></h4>
-                <h4><Link to='/calendar'>Calendar</Link></h4>
-                <h4><Link to='/about'>About</Link></h4>
+        <h4><Link className={ loginClass } to='/'>Log In</Link></h4>
+                <h4><Link className={dashClass} to='/dashboard'>Home</Link></h4>
+                <h4><Link className={calClass} to='/calendar'>Calendar</Link></h4>
+                <h4><Link className={abtClass}to='/about'>About</Link></h4>
                 <h4><a href="http://localhost:3001/api/logout">
                             Logout
                         </a></h4>
@@ -57,4 +62,4 @@ class Navigation extends Component {
     );
   }
 }
-export default Navigation;
+export default withRouter(Navigation);

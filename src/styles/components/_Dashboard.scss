@@ -5,8 +5,8 @@
 }
 .avatar{
     border-radius:50%;
-    height:100px;
-    width:auto;
+    height:auto;
+    width:100px;
 }
 .hide-apt{
    transition: height .5s ease-in;
@@ -28,7 +28,15 @@
     justify-content: space-around;
 }
 .dashboard2{
-    justify-content: center;
+    margin-top:125px;
+    display:flex;
+    flex-direction: column;
     align-items:center;
+}
+.fa-calendar-alt:hover{
+    color:red
 
+}
+.fa-calendar-alt{
+    font-size:38px;
 }

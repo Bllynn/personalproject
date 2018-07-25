@@ -26,6 +26,14 @@ header {
     justify-content: center;
     align-items: center;
   }
+
+  .link-active {
+    background-color:white;
+    color:black;
+  }
+  .link-inactive {
+    background-color:none;
+  }
   
 .ingredients {
     width: 60%;
@@ -127,4 +135,7 @@ header {
   }
   .show-nav{
     height:85px;
+  }
+  .fa-sign-out-alt{
+    font-size:30px;
   }
