@@ -8,8 +8,6 @@ export default function about(){
    return (
    
     <div className='About'>
-        <Navigation/>
-        <Link to='/'><button className='abtbtn'>Return</button></Link>
     <p id="title">Massage Therapy</p>
     <p id="subtitle">Becuase I'm Bored</p>
    
@@ -57,7 +55,7 @@ export default function about(){
         <p>
             Once considered an alternative or fringe approach, massage therapy is now much more mainstream and growing in popularity. More importantly, now that massage therapy is considered a mainstream treatment option, many insurance companies provide coverage for treatment sessions. This form of therapy involves hands-on techniques to increase circulation, relieve tension, reduce stress, relieve anxiety, improve sleep, and promote relaxation throughout the entire body, as well as many other benefits.
         </p>
-
+        <Link to='/'><button className='abtbtn'>Return</button></Link>
 
 
     </div>

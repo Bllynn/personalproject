@@ -15,7 +15,6 @@ export function editAppointment(newApt){
     }
 }
 export function createAppointment(newApt){
-    console.log(newApt)
     return{
         type:CREATE_APPOINTMENT,
         payload:newApt
