@@ -41,7 +41,7 @@ class App extends Component {
       <div className="Main">
         <div className='Welcome'>
         <h1>
-          Welcome to the schedule meister! Please log in to veiw or schedule any appointments
+          Welcome to Lucrative Business Co.
         </h1>
           <div className='signin'>
           <i class="fas fa-sign-in-alt"

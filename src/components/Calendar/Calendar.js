@@ -116,8 +116,10 @@ timeChange=(event)=>{
             
         </div>
         </div>
-       <button
-        onClick={this.handleAppointment}>Schedule</button>
+      
+        <i class="fas fa-check"
+        onClick={this.handleAppointment}>Done
+        </i>
     </div>      
   </div>)
   }

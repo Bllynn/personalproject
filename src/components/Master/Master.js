@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import{getUserData} from '../../dux/reducer';
 import {getAppointmentData} from '../../dux/reducer';
+import {getAllAppointmentData} from '../../dux/reducer';
 import {editAppointment} from '../../dux/reducer';
 import MasterBS from '../MasterBS/MasterBS';
 
@@ -30,9 +31,11 @@ class Master extends Component{
                 this.props.getUserData(user.data)
             })
         }
-        if(this.props.appointment.length === 0){
+        if(this.props.allappointments.length === 0){
+            console.log(this.props.allappointments)
             axios.get('/api/allappointments').then(appointment=>{
-                this.props.getAppointmentData(appointment.data)
+                console.log(appointment)
+                this.props.getAllAppointmentData(appointment.data)
             })
         }
     }
@@ -53,7 +56,7 @@ class Master extends Component{
 
 
     render(){
-        let appointments = this.props.appointment.map((e,id)=>{
+        let appointments = this.props.allappointments.map((e,id)=>{
             return(
                 <MasterBS
                 picture={e.picture}
@@ -86,14 +89,16 @@ class Master extends Component{
 function mapStateToProps(state){
     return{
         user:state.user,
-        appointment:state.appointment
+        appointment:state.appointment,
+        allappointments:state.allappointments
     }
 }
 
 const actions = {
     editAppointment,
     getAppointmentData,
-    getUserData
+    getUserData,
+    getAllAppointmentData
 }
 
 export default connect(mapStateToProps, actions)(Master)

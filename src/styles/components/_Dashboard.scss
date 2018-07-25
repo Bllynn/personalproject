@@ -24,11 +24,11 @@
 }
 .hide-apt{
    transition: height .5s ease-in;
-    background:#bada55;
+    background:transparent;
     display:flex;
     padding:0 80px;
     color:blue;
-    width:100%;
+    width:75%;
     height:0px;
     overflow:hidden;
 }

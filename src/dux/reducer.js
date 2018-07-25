@@ -1,12 +1,14 @@
 const initialState={
     user:{},
-    appointment:[]
+    appointment:[],
+    allappointments:[]
 }
 const EDIT_APT='EDIT_APT'
 const USER_DATA='USER_DATA';
 const APPOINTMENT_DATA='APPOINTMENT_DATA'
 const DELETE_APT='DELETE_APT'
 const CREATE_APPOINTMENT='CREATE_APPOINTMENT'
+const ALL_APPOINTMENT_DATA='ALL_APPOINTMENT_DATA'
 
 export function editAppointment(newApt){
     return{
@@ -34,6 +36,13 @@ export function getAppointmentData(apt){
         payload: apt
     }
 }
+export function getAllAppointmentData(apt){
+    
+    return{
+        type:ALL_APPOINTMENT_DATA,
+        payload: apt
+    }
+}
 
 export function getUserData(user){
     
@@ -47,6 +56,8 @@ export function getUserData(user){
 
 export default function reducer(state=initialState,action){
     switch(action.type){
+        case ALL_APPOINTMENT_DATA:
+        return Object.assign({}, state,{allappointments:action.payload})
         case EDIT_APT:
             return Object.assign({}, state,{appointment:action.payload})
         case CREATE_APPOINTMENT:

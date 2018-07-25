@@ -21,7 +21,7 @@ class Navigation extends Component {
     let loginClass = pathname === "/" ? 'link-active' : 'link-inactive'
     let calClass = pathname === "/calendar" ? 'link-active' : 'link-inactive'
     let dashClass = pathname === "/dashboard" ? 'link-active' : 'link-inactive'
-    let abtClass = pathname === "/About" ? 'link-active' : 'link-inactive'
+    let abtClass = pathname === "/about" ? 'link-active' : 'link-inactive'
     return (
       <div className="App">
       <header>

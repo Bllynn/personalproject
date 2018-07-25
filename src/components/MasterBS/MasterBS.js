@@ -26,10 +26,7 @@ class MasterBS extends Component{
         })
       }
         render(){
-            const userId = this.props.user.id
-            const picture = this.props.appointment.filter(appointment=>{
-                return appointment.client_id === userId
-            })
+            
             return(
                 <div className='appointmentCard'>
                 <img className='avatar'src={this.props.picture} alt="avatar"/>
@@ -49,7 +46,8 @@ class MasterBS extends Component{
   function mapStateToProps(state){
     return{
         user:state.user,
-        appointment:state.appointment
+        appointment:state.appointment,
+        allappointments:state.allappointments
     }
   }
   

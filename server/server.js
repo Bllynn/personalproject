@@ -29,7 +29,7 @@ massive(CONNECTION_STRING).then(db=>{
 });
 
 
-app.use(authMid.bypassAuthInDevelopment)
+// app.use(authMid.bypassAuthInDevelopment)
 ///////////////////////////AUTH 0/////////////////////////
 app.get('/auth/callback', async (req,res)=>{
   //code from auth0 on req.query.code
