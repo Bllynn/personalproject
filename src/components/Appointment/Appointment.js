@@ -16,6 +16,7 @@ class Appointment extends Component{
         })
       }
         render(){
+            
             let edit = this.state.toggleEdit? 'edit':'cardNormal'// declare variable that will be class string for appointment card
             return(
                 <div className='appointmentCard'>

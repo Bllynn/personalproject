@@ -1,7 +1,18 @@
 import React, {Component} from 'react';
 import moment from 'moment';
-
-
+import {connect} from 'react-redux';
+import { withStyles } from '@material-ui/core/styles';
+const styles = theme => ({
+    container: {
+      display: 'flex',
+      flexWrap: 'wrap',
+    },
+    textField: {
+      marginLeft: theme.spacing.unit,
+      marginRight: theme.spacing.unit,
+      width: 225,
+    },
+  });
 class MasterBS extends Component{
     constructor(){
         super()
@@ -15,15 +26,13 @@ class MasterBS extends Component{
         })
       }
         render(){
-            const client=this.props.client;
-            const picture = this.props.user.filter(user=>{
-                if(user.id===client){
-                    return user;
-                }
+            const userId = this.props.user.id
+            const picture = this.props.appointment.filter(appointment=>{
+                return appointment.client_id === userId
             })
             return(
                 <div className='appointmentCard'>
-                <img className='avatar'src={picture[0].picture} alt="avatar"/>
+                <img className='avatar'src={this.props.picture} alt="avatar"/>
                 <h3>Date:{moment(this.props.time).format('MMMM, Do')}</h3>
                     <h3>Day: {moment(this.props.time).format('dddd')}</h3>
             
@@ -36,4 +45,13 @@ class MasterBS extends Component{
         }
 
 }
-  export default MasterBS
+
+  function mapStateToProps(state){
+    return{
+        user:state.user,
+        appointment:state.appointment
+    }
+  }
+  
+  
+  export default connect(mapStateToProps)(withStyles(styles)(MasterBS))

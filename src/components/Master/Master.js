@@ -25,13 +25,16 @@ class Master extends Component{
 
             toggleAppointment:false,
         })
-        axios.get('/api/users').then(user=>{
-            this.props.getUserData(user.data)
-        })
-        axios.get('/api/allappointments').then(appointment=>{
-           
-            this.props.getAppointmentData(appointment.data)
-        })
+        if(this.props.user.id){
+            axios.get('/api/users').then(user=>{
+                this.props.getUserData(user.data)
+            })
+        }
+        if(this.props.appointment.length === 0){
+            axios.get('/api/allappointments').then(appointment=>{
+                this.props.getAppointmentData(appointment.data)
+            })
+        }
     }
 
     toggleAppointment=()=>{
@@ -53,7 +56,7 @@ class Master extends Component{
         let appointments = this.props.appointment.map((e,id)=>{
             return(
                 <MasterBS
-                user={this.props.user}
+                picture={e.picture}
                 client={e.client_id}
                 time={e.time}
                 key={e.id}
