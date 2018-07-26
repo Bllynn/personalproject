@@ -45,7 +45,7 @@ class App extends Component {
         </h1>
           <div className='signin'>
           <i class="fas fa-sign-in-alt"
-          onClick={this.login}>
+          onClick={this.login}><p className='login'>Login</p>
           </i>
 
 
