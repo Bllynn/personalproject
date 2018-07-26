@@ -42,7 +42,7 @@ class Navigation extends Component {
                 <h4><Link className={dashClass} to='/dashboard'>Home</Link></h4>
                 <h4><Link className={calClass} to='/calendar'>Calendar</Link></h4>
                 <h4><Link className={abtClass} to='/about'>About</Link></h4>
-                <h4><a href="http://localhost:3001/api/logout"><i class="fas fa-sign-out-alt"></i>
+                <h4><a href={`${process.env.FRONTEND_DOMAIN}/api/logout`}><i class="fas fa-sign-out-alt"></i>
                         </a></h4>
           </div>
         </nav>
@@ -53,7 +53,7 @@ class Navigation extends Component {
                 <h4><Link className={dashClass} to='/dashboard'>Home</Link></h4>
                 <h4><Link className={calClass} to='/calendar'>Calendar</Link></h4>
                 <h4><Link className={abtClass}to='/about'>About</Link></h4>
-                <h4><a href="http://localhost:3001/api/logout">
+                <h4><a href={`${process.env.FRONTEND_DOMAIN}/api/logout`}>
                             Logout
                         </a></h4>
         </div>

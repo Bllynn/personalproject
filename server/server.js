@@ -1,10 +1,11 @@
 const express = require('express'),
-        app = express(),
-        session = require('express-session'),
-        axios = require('axios'),
-        massive = require('massive'),
-        ctrl = require('./controller/controller'),
-        authMid= require('./middleware/authMiddleware')
+app = express(),
+session = require('express-session'),
+axios = require('axios'),
+massive = require('massive'),
+ctrl = require('./controller/controller'),
+authMid= require('./middleware/authMiddleware'),
+path = require('path'); // Usually moved to the start of file
 
 require('dotenv').config();
 app.use(express.json());
@@ -28,7 +29,7 @@ massive(CONNECTION_STRING).then(db=>{
     console.log('DB connected');
 });
 
-
+app.use(express.static(`${__dirname}/../build`))
 // app.use(authMid.bypassAuthInDevelopment)
 ///////////////////////////AUTH 0/////////////////////////
 app.get('/auth/callback', async (req,res)=>{
@@ -51,15 +52,15 @@ app.get('/auth/callback', async (req,res)=>{
   let userExists = await db.find_user([sub]);
       if(userExists[0]){
           req.session.user=userExists[0];
-          res.redirect('http://localhost:3000/#/dashboard');
+          res.redirect(`${process.env.FRONTEND_DOMAIN}/#/dashboard`);
       }else{
           db.create_user([sub,given_name,family_name,picture]).then( createdUser =>{
               req.session.user = createdUser[0]//put something on the req.session.user
-              res.redirect('http://localhost:3000/#/dashboard');
+              res.redirect(`${process.env.FRONTEND_DOMAIN}/#/dashboard`);
           });
           // let createdUser = await db.create_user([sub,name,picture]);
           // req.session.user=createdUser[0];
-          // res.redirect('http://localhost:3000/#/');
+          // res.redirect('${process.env.FRONTEND_DOMAIN}/#/');
       }
 });
   
@@ -75,7 +76,7 @@ app.get('/api/user-data', (req,res)=>{
 
 app.get('/api/logout',(req,res)=>{
   req.session.destroy();
-  res.redirect('http://localhost:3000/#/');
+  res.redirect(`${process.env.FRONTEND_DOMAIN}/#/`);
 })
   
   function checkLoggedIn(req, res, next) {
@@ -109,4 +110,8 @@ app.post('/api/appointment', ctrl.createAppointment)
 const port=process.env.SERVER_PORT || 3001
 app.listen(SERVER_PORT,()=>{
     console.log(`Server is listening on port:${port}`)
+});
+
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'));
 });
