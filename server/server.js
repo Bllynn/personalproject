@@ -4,7 +4,6 @@ session = require('express-session'),
 axios = require('axios'),
 massive = require('massive'),
 ctrl = require('./controller/controller'),
-authMid= require('./middleware/authMiddleware'),
 path = require('path'); // Usually moved to the start of file
 
 require('dotenv').config();
@@ -39,7 +38,7 @@ app.get('/auth/callback', async (req,res)=>{
       client_secret:REACT_APP_CLIENT_SECRET,
       code: req.query.code,
       grant_type:'authorization_code',
-      redirect_uri:`http://${req.headers.host}/auth/callback`
+      redirect_uri:`${process.env.PROTOCOL}${req.headers.host}/auth/callback`
   };/////////////////////////PROCESS BELOW THIS////////////////////
   // responseWithToken is taking the data we get back from the axios.post to specific url
   //sending the information located within the payload object ABOVE
