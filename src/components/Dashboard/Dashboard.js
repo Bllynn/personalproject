@@ -76,6 +76,7 @@ class Dashboard extends Component{
                 <div className='appointment-list'>
                 {appointments}
             </div>
+            <button>Check Animation:</button>
         </div>
             
         )

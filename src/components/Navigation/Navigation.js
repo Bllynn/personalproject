@@ -38,24 +38,33 @@ class Navigation extends Component {
               </div>
           </div>
           <div className="nav-menu">
-          <h4><Link className={ loginClass } to='/'>Log In</Link></h4>
-                <h4><Link className={dashClass} to='/dashboard'>Home</Link></h4>
-                <h4><Link className={calClass} to='/calendar'>Calendar</Link></h4>
-                <h4><Link className={abtClass} to='/about'>About</Link></h4>
-                <h4><a href={`${process.env.FRONTEND_DOMAIN}/api/logout`}><i class="fas fa-sign-out-alt"></i>
-                        </a></h4>
+          <ul>
+            <li><Link className={ loginClass } to='/'>Home</Link></li>
+            <li><Link className={dashClass} to='/dashboard'>My Appointments</Link></li>
+            <li><Link className={calClass} to='/calendar'>All Appointments</Link></li>
+            <li><a href={`${process.env.FRONTEND_DOMAIN}/api/logout`}>Logout
+                        </a></li>
+
+
+
+
+          </ul>
+      
           </div>
         </nav>
       </header>
       <div className={this.state.toggleNav ? 'show-nav mobile-nav' : 'mobile-nav'}>
         <div className="mobile-nav-content">
-        <h4><Link className={ loginClass } to='/'>Log In</Link></h4>
-                <h4><Link className={dashClass} to='/dashboard'>Home</Link></h4>
-                <h4><Link className={calClass} to='/calendar'>Calendar</Link></h4>
-                <h4><Link className={abtClass}to='/about'>About</Link></h4>
-                <h4><a href={`${process.env.FRONTEND_DOMAIN}/api/logout`}>
-                            Logout
-                        </a></h4>
+        <h4 onClick={() => this.toggleNav()}><Link className={ loginClass } to='/'
+        >Home</Link></h4>
+                <h4 onClick={() => this.toggleNav()}><Link className={dashClass} to='/dashboard'
+                >My Appointments</Link></h4>
+                <h4 onClick={() => this.toggleNav()}><Link className={calClass} to='/calendar'
+                >All Appoinments</Link></h4>
+                <h4 onClick={() => this.toggleNav()}><Link className={abtClass}to='/about'
+                >About</Link></h4>
+                <h4 onClick={() => this.toggleNav()}><a href={`${process.env.FRONTEND_DOMAIN}/api/logout`}
+                >Logout</a></h4>
         </div>
       </div>
       </div>

@@ -1,5 +1,5 @@
 header {
-  z-index: 9999;
+  z-index: 1;
     position:fixed;
     background-color: #343a40;
     width: 100%;
@@ -54,7 +54,30 @@ header {
     justify-content: space-between;
     width: 700px;
   }
-  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 25px 0px;
+    text-decoration: none;
+    font-size:20px;
+}
+li a:hover {
+    background-color: #111;
+    color:white;
+}
   @media (max-width: 576px)and
   (orientation:portrait) {
     nav {
@@ -84,6 +107,10 @@ header {
     nav {
       width: 720px;
     }
+    h1{
+      font-size:30px;
+
+    }
     .Welcome{
         justify-content: space-around;
     }
@@ -108,21 +135,54 @@ header {
     .Welcome{
       justify-content: space-around;
   }
+  ul {
+    width:100%;
+    list-style-type: none;
+    display:flex;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    justify-content: space-around;
   }
+  li a {
+    color: white;
+    text-align:center;
+    padding: 23px 0;
+    text-decoration: none;
+    font-size:1.1em;
+}
   
 @media (min-width: 1200px) {
     nav {
-      width: 75%;
+      width: 80%;
     }
     .nav-menu {
-      width:500px;
+      width:50%;
       display: flex;
-      justify-content:space-between;
     }
     .Welcome{
       justify-content: space-around;
+    }
+    ul {
+      width:100%;
+      list-style-type: none;
+      display:flex;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      justify-content: space-between;
+     
   }
+    li a {
+      color: white;
+      text-align:center;
+      padding: 23px 0;
+      text-decoration: none;
+      font-size:1.5em;
   }
+}
+
+}
   .mobile-nav{
     background-color: #343a40;
     padding:0 80px;
@@ -137,7 +197,4 @@ header {
   }
   .show-nav{
     height:85px;
-  }
-  .fa-sign-out-alt{
-    font-size:30px;
   }

@@ -28,9 +28,11 @@ a {
   width:75%;
 }
 .fa-sign-in-alt:hover{
-  cursor:pointer
+  cursor:pointer;
+  
 }
 .signin{
+  transition: transform .3s;
   font-size: 40px
 }
 .login{
@@ -38,4 +40,5 @@ a {
 }
 .signin:hover{
   color:red;
+  transform: scale(1.2);
 }
