@@ -97,6 +97,7 @@ header {
       width:500px;
       display: flex;
       justify-content:space-around;
+      z-index: 1;
     }
     nav {
       width: 1093px;
@@ -126,6 +127,7 @@ header {
     background-color: #343a40;
     padding:0 80px;
     position: fixed;
+    z-index: 1;
     top:70px;
     color:white;
     width:100%;
