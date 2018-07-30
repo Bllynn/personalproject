@@ -1,7 +1,7 @@
 @import '../variables';
 .dashboard{
-    margin-top:70px;
-    min-height:calc(100vh - 70px);
+    padding-top:100px;
+    height:100vh;
     width:auto;
     background:url(../imports/card.jpg) no-repeat center center fixed;
     position: relative;
@@ -31,7 +31,8 @@
     justify-content: space-around;
 }
 .dashboard2{
-    margin-top: 70px;
+    padding-top: 70px;
+    background:transparent;
     display:flex;
     flex-direction: column;
     align-items:center;
