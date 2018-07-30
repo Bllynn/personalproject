@@ -24,6 +24,16 @@ const styles = theme => ({
   },
 });
 
+
+
+
+
+
+
+
+
+
+
 class Calendar extends Component {
   constructor (props) {
     super(props)
@@ -53,7 +63,7 @@ class Calendar extends Component {
       }else{
         this.props.createAppointment(res.data)
         swal({
-          title:'See you then!',
+          title:`See you at ${this.state.date} ${this.state.time}`,
           text:'Appointment Scheduled',
           icon:'success',
           button:'Ok',
@@ -90,6 +100,7 @@ timeChange=(event)=>{
         <div className='Date'>
         <form className={classes.container} noValidate>
         <TextField
+          style={{color: "#fff"}}
           onChange={this.dateChange}
               id="date"
               label="Please select a date"

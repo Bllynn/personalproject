@@ -1,10 +1,10 @@
 @import '../variables';
 .dashboard{
     padding-top:100px;
-    height:100vh;
-    width:auto;
+    min-height:100vh;
+    height:100%;
+    width:100vw;
     background:url(../imports/hammock2.jpg) no-repeat center center fixed;
-    position: absolute;
 }
 .avatar{
     border-radius:50%;
@@ -44,4 +44,13 @@
 }
 .fa-calendar-alt{
     font-size:38px;
+}
+.new{
+    font-size:19px;
+}
+#time{
+    color:white;
+}
+#date{
+    color:white;
 }
