@@ -63,7 +63,7 @@ class Calendar extends Component {
       }else{
         this.props.createAppointment(res.data)
         swal({
-          title:`See you at ${this.state.date} ${this.state.time}`,
+          title:`See you at ${this.state.time} ${this.state.date}`,
           text:'Appointment Scheduled',
           icon:'success',
           button:'Ok',
