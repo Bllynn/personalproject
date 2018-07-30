@@ -57,7 +57,7 @@ class Calendar extends Component {
         this.props.toggle()
         this.props.editAppointment(res.data)
         swal({
-          title:'See you then!',
+          title:`See you at ${this.state.time} ${this.state.date}`,
           text:'Appointment Scheduled',
           icon:'success',
           button:'Ok',
