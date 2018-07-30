@@ -26,7 +26,7 @@ class Navigation extends Component {
       <div className="App">
       <header>
         <nav>
-          <h2>Lucrative Business Co.</h2>
+          <h2 className='logo'><Link className={ loginClass } to='/'>Oasis Massage</Link></h2>
           <div className="good-burger" onClick={() => this.toggleNav()}>
             <div>
               MENU
@@ -42,7 +42,8 @@ class Navigation extends Component {
             <li><Link className={ loginClass } to='/'>Home</Link></li>
             <li><Link className={dashClass} to='/dashboard'>My Appointments</Link></li>
             <li><Link className={calClass} to='/calendar'>All Appointments</Link></li>
-            <li><a href={`${process.env.FRONTEND_DOMAIN}/api/logout`}>Logout
+            <li><Link className={abtClass} to='/about'>About</Link></li>
+            <li><a href={`/api/logout`}>Logout
                         </a></li>
 
 
@@ -56,14 +57,14 @@ class Navigation extends Component {
       <div className={this.state.toggleNav ? 'show-nav mobile-nav' : 'mobile-nav'}>
         <div className="mobile-nav-content">
         <h4 onClick={() => this.toggleNav()}><Link className={ loginClass } to='/'
-        >Home</Link></h4>
+        >Home</Link></h4><hr/>
                 <h4 onClick={() => this.toggleNav()}><Link className={dashClass} to='/dashboard'
-                >My Appointments</Link></h4>
+                >My Appointments</Link></h4><hr/>
                 <h4 onClick={() => this.toggleNav()}><Link className={calClass} to='/calendar'
-                >All Appoinments</Link></h4>
+                >All Appoinments</Link></h4><hr/>
                 <h4 onClick={() => this.toggleNav()}><Link className={abtClass}to='/about'
-                >About</Link></h4>
-                <h4 onClick={() => this.toggleNav()}><a href={`${process.env.FRONTEND_DOMAIN}/api/logout`}
+                >About</Link></h4><hr/>
+                <h4 onClick={() => this.toggleNav()}><a href={`/api/logout`}
                 >Logout</a></h4>
         </div>
       </div>

@@ -28,13 +28,13 @@ class MasterBS extends Component{
         render(){
             
             return(
-                <div className='appointmentCard'>
+                <div className='appointmentCard2'>
                 <img className='avatar'src={this.props.picture} alt="avatar"/>
                 <h3>Date:{moment(this.props.time).format('MMMM, Do')}</h3>
                     <h3>Day: {moment(this.props.time).format('dddd')}</h3>
             
                     <h3>
-                        When: {moment(this.props.time).format('h:mm a')}
+                        Time: {moment(this.props.time).format('h:mm a')}
                     </h3>
                     </div>
             )

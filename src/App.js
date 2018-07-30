@@ -40,16 +40,14 @@ class App extends Component {
     return (
       <div className="Main">
         <div className='Welcome'>
-        <h1>
-          Welcome to Lucrative Business Co.
-        </h1>
+        <p className='title'>
+          Come find your Oasis
           <div className='signin'>
           <i class="fas fa-sign-in-alt"
           onClick={this.login}><p className='login'>Login</p>
-          </i>
-
-
-          </div>
+          </i></div>
+        </p>
+          
             </div>
       </div>
     );

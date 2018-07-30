@@ -25,7 +25,7 @@ class Appointment extends Component{
                     <h3>Day: {moment(this.props.time).format('dddd')}</h3>
             
                     <h3>
-                        When: {moment(this.props.time).format('h:mm a')}
+                        Time: {moment(this.props.time).format('h:mm a')}
                         
                     </h3>
                     </div>
@@ -37,7 +37,7 @@ class Appointment extends Component{
                                 />
         
                         </div>
-                    <div className='editButtons'>
+                    <div className={this.state.toggleEdit ? 'editButtons2': 'editButtons'}>
                     <i class="far fa-edit"
                     onClick={this.toggleEdit}></i>
                     

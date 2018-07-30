@@ -3,7 +3,6 @@
   display:flex;
   flex-direction: column;
   align-items: center;
-  background-color:magenta;
 }
 a {
     color: inherit;
@@ -12,33 +11,46 @@ a {
   }
 .Main{
   height:100vh;
-  background-color:purple;
+  width:100vw;
+  background:url(../imports/hammock2.jpg) no-repeat center center fixed;
   display:flex;
   flex-direction: column;
   align-items: center;
   }
-.Welcome{
-  margin-top:200px;
-  text-align: center;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  background-color:pink;
-  height:50%;
-  width:75%;
+  .Welcome {
+    margin-top: 350px;
+    font-family: 'Tangerine', cursive;
+    size: 150px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    background: transparent;
+    height: 100%;
+    width: 75%;
 }
 .fa-sign-in-alt:hover{
   cursor:pointer;
   
 }
 .signin{
-  transition: transform .3s;
-  font-size: 40px
+  height:56px;
+  width:42px;
+  margin-right:1px;
+  margin-left:auto;
+  transition: transform.3s;
+  font-size: 40px;
+  color:white;
 }
 .login{
   font-size:15px;
 }
 .signin:hover{
-  color:red;
   transform: scale(1.2);
 }
+.title{
+  text-align: right;
+  width:75%;
+  font-size:150px;
+  color:white;
+}
+

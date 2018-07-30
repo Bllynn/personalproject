@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import axios from 'axios';
 import moment from 'moment';
 import {editAppointment} from '../../dux/reducer';
+import swal from 'sweetalert';
 
 // import 'react-datepicker/dist/react-datepicker.css';
 
@@ -48,13 +49,19 @@ class Calendar extends Component {
         date:timeChecker,
     }).then((res)=>{
       if(res.data ==='F'){
-        alert(`Cannot schedule appointment that has already passed`)
+        swal('OH NO!',`Cannot schedule appointment that has already passed`,"error")
       }
       else if(res.data ==='T'){
-        alert(`Appointment time of ${this.state.time} is unavailable for ${this.state.date}`)
+        swal('Uh-oh!', `Appointment time of ${this.state.time} is unavailable for ${this.state.date}`,"error")
       }else{
         this.props.toggle()
         this.props.editAppointment(res.data)
+        swal({
+          title:'See you then!',
+          text:'Appointment Scheduled',
+          icon:'success',
+          button:'Ok',
+        });
       }
     }).catch(err=>{
       console.log(err)

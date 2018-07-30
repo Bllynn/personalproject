@@ -1,6 +1,10 @@
 @import '../variables';
 
 .appointmentCard{
+    font-family: 'Tangerine', cursive;
+    h3{
+        font-size:55px;
+    }
     display: flex;
     height:230px;
     width:425px;
@@ -11,11 +15,6 @@
     box-shadow:4px 4px 4px 4px #999;
     justify-content: center;
 }
-.edit{
-    h3{
-        font-size: 1.0rem;
-    }
-}
 .editButtons{
     font-size: 30px;
     width:100%;
@@ -23,6 +22,19 @@
     display:flex
 
 }
+.editButtons2{
+    width:100%;
+    justify-content: space-around;
+    display:flex
+
+}
+.edit{
+    h3{
+        font-family: 'Tangerine', cursive;
+        font-size: 2.0rem;
+    }
+}
+
 .hide-edit{
     transition: opacity .5s linear;
     background:transparent;
@@ -42,21 +54,6 @@
 }
 button:hover{
     cursor: pointer;
-}
-a:link {
-    text-decoration: none;
-}
-
-a:visited {
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-a:active {
-    text-decoration: none;
 }
 .fa-edit:hover{
  color:red;

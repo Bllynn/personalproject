@@ -3,19 +3,8 @@
     margin-top:70px;
     min-height:calc(100vh - 70px);
     width:auto;
-    position: relative;
-}
-.dashboard::after{
-    content:'';
-    top:0;
-    left:0;
-    bottom:0;
-    right:0;
-    min-height:calc(100vh - 70px);
     background:url(../imports/card.jpg) no-repeat center center fixed;
-    opacity:.2;
-    position: absolute;
-    z-index: -1;
+    position: relative;
 }
 .avatar{
     border-radius:50%;
@@ -42,6 +31,7 @@
     justify-content: space-around;
 }
 .dashboard2{
+    margin-top: 70px;
     display:flex;
     flex-direction: column;
     align-items:center;
