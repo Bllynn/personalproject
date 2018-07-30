@@ -3,8 +3,8 @@
     padding-top:100px;
     height:100vh;
     width:auto;
-    background:url(../imports/card.jpg) no-repeat center center fixed;
-    position: relative;
+    background:url(../imports/hammock2.jpg) no-repeat center center fixed;
+    position: absolute;
 }
 .avatar{
     border-radius:50%;
@@ -31,6 +31,7 @@
     justify-content: space-around;
 }
 .dashboard2{
+    background: fixed;
     padding-top: 70px;
     background:transparent;
     display:flex;
